@@ -1,7 +1,8 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: true
 };
+module.exports = nextConfig;
