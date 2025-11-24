@@ -1,8 +1,8 @@
-import Star from "lucide-react/dist/esm/icons/star";
-import User from "lucide-react/dist/esm/icons/user";
-import Briefcase from "lucide-react/dist/esm/icons/briefcase";
-import FolderKanban from "lucide-react/dist/esm/icons/folder-kanban";
-import Mail from "lucide-react/dist/esm/icons/mail";
+import { Star } from 'lucide-react';
+import { User } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
+import { FolderKanban } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 function NavItem({
   icon: Icon,

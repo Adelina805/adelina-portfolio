@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Adelina Martinez Portfolio",
+  title: "Adelina Martinez",
   description: "work in progress...",
+  icons: {
+    icon: '/star.svg',
+  },
 };
 
 export default function RootLayout({
