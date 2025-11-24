@@ -64,10 +64,10 @@ export default function Home() {
             </div>
 
             <section className="relative z-10 h-full flex flex-col items-center justify-center text-center">
-              <p className="text-xl sm:text-2xl font-semibold">Hello! my name is</p>
+              <p className="font-semibold text-[clamp(1rem,2vw,2rem)]">Hello! my name is</p>
               <h1 className="font-bold tracking-tight leading-none mt-12 text-[clamp(3rem,10vw,9rem)]">ADELINA</h1>
               <h2 className="font-normal tracking-tight leading-none text-[clamp(2.7rem,9vw,8.1rem)]">MARTINEZ</h2>
-              <p className="mt-12 text-xl sm:text-2xl font-semibold">Welcome to my portfolio !</p>
+              <p className="mt-12 font-semibold text-[clamp(1rem,2vw,2rem)]">Welcome to my portfolio !</p>
 
               <a
                 href="#about"
