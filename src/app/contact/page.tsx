@@ -1,3 +1,7 @@
 export default function ContactPage() {
-  return <h1>Contact</h1>;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <h1>CONTACT</h1>
+    </div>
+  );
 }

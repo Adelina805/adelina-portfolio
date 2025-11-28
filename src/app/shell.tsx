@@ -16,7 +16,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
 
-  // no more fading state – just flip dark
   function toggleDark(isDark: boolean) {
     setDark(isDark);
   }
@@ -42,7 +41,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         className={`
           pointer-events-none absolute inset-0
           bg-[radial-gradient(circle_at_center,#295DAA,#ffffff)]
-          transition-opacity duration-500 ease-in-out
+          transition-opacity duration-700 ease-in-out
           ${dark ? "opacity-0" : "opacity-100"}
         `}
       />
@@ -52,7 +51,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         className={`
           pointer-events-none absolute inset-0
           bg-[radial-gradient(circle_at_center,#295DAA,#000000)]
-          transition-opacity duration-500 ease-in-out
+          transition-opacity duration-700 ease-in-out
           ${dark ? "opacity-100" : "opacity-0"}
         `}
       />

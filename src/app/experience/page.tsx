@@ -1,3 +1,7 @@
 export default function ExperiencePage() {
-  return <h1>Experience</h1>;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <h1>EXPERIENCE</h1>
+    </div>
+  );
 }
