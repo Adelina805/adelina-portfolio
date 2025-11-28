@@ -5,7 +5,7 @@ export const FogShader = {
     u_resolution: { value: [1, 1] },
   },
 
-  vertexShader: /* glsl */ `
+  vertexShader: /* glsl */`
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -13,12 +13,14 @@ export const FogShader = {
     }
   `,
 
-  fragmentShader: /* glsl */ `
+  fragmentShader: /* glsl */`
     varying vec2 vUv;
     uniform float u_time;
     uniform vec2 u_mouse;
 
-    // ---- Simplex Noise (small utility for gentle warping) ----
+    // -----------------------------
+    // Simplex Noise (same as before)
+    // -----------------------------
     vec3 mod289(vec3 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
     vec2 mod289(vec2 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
     vec3 permute(vec3 x){ return mod289(((x*34.0)+1.0)*x); }
@@ -67,32 +69,39 @@ export const FogShader = {
     void main() {
       vec2 uv = vUv;
 
-      // -------------------------------------
-      // 1. Radial gradient centered in middle
-      // -------------------------------------
+      // ------------------------------------------------
+      // 1. Animate the gradient center for drifting fog
+      // ------------------------------------------------
       vec2 center = vec2(0.5, 0.5);
 
-      // Mouse gently shifts the center point
-      center += (u_mouse - 0.5) * 0.05;
+      // Mouse influence
+      center += (u_mouse - 0.5) * 0.15;
 
+      // Slow drifting orbit motion
+      center.x += sin(u_time * 0.07) * 0.03;
+      center.y += cos(u_time * 0.05) * 0.03;
+
+      // Base radial distance
       float dist = distance(uv, center);
 
-      // Pure static gradient base
+      // Base gradient (reverse = darker center)
       float gradient = smoothstep(0.0, 0.9, dist);
 
-      // Main colors
-      vec3 colorA = vec3(0.161, 0.365, 0.667);  // #295DAA
-      vec3 colorB = vec3(1.0, 1.0, 1.0);        // #ffffff (swap for black in dark mode)
+      // -----------------------------------------
+      // 2. Noise-based surface motion (visible)
+      // -----------------------------------------
+      float noiseWarp = snoise(uv * 3.0 + u_time * 0.1);
+      float noiseSmall = snoise(uv * 10.0 + u_time * 0.2);
 
-      // -------------------------------------
-      // 2. Gentle motion via low-scale noise
-      // -------------------------------------
-      float n = snoise(uv * 2.0 + u_time * 0.05);
-      gradient += n * 0.04; // VERY subtle warping
+      gradient += noiseWarp * 0.08;   // big soft movement
+      gradient += noiseSmall * 0.015; // subtle shimmer
 
-      // -------------------------------------
-      // 3. Final color mix
-      // -------------------------------------
+      // -----------------------------------------
+      // 3. Final color blend
+      // -----------------------------------------
+      vec3 colorA = vec3(0.161, 0.365, 0.667); // #295DAA
+      vec3 colorB = vec3(1.0);
+
       vec3 color = mix(colorA, colorB, gradient);
 
       gl_FragColor = vec4(color, 1.0);
