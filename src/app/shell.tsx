@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import React, { ReactNode } from "react";
 import Link from "next/link";
+import { Canvas } from "@react-three/fiber";
+import FogBackground from "./FogBackground"; // ← add this
 
 function NavItem({ href, children }: { href: string; children: ReactNode}) {
   return (
@@ -21,11 +23,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    if (dark) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
   }, [dark]);
 
   return (
@@ -35,21 +34,27 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         ${dark ? "text-white" : "text-black"}
       `}
     >
+
+      {/* SHADER BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Canvas>
+          <FogBackground />
+        </Canvas>
+      </div>
+
       {/* CROSSFADE BACKGROUNDS */}
-      {/* Light background */}
       <div
         className={`
-          pointer-events-none absolute inset-0
+          pointer-events-none absolute inset-0 -z-10
           bg-[radial-gradient(circle_at_center,#295DAA,#ffffff)]
           transition-opacity duration-700 ease-in-out
           ${dark ? "opacity-0" : "opacity-100"}
         `}
       />
 
-      {/* Dark background */}
       <div
         className={`
-          pointer-events-none absolute inset-0
+          pointer-events-none absolute inset-0 -z-10
           bg-[radial-gradient(circle_at_center,#295DAA,#000000)]
           transition-opacity duration-700 ease-in-out
           ${dark ? "opacity-100" : "opacity-0"}
@@ -58,11 +63,11 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
       {/* border box */}
       <div className="relative h-full w-full border-2 overflow-hidden">
-        {/* content … */}
         <div className="grid h-full grid-rows-[2rem_1fr]">
+
           {/* HEADER */}
-          <header className={`relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2`}>
-            {/* Mobile button */}
+          <header className="relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2">
+
             <button
               className="sm:hidden p-2 pr-0 focus:outline-none"
               aria-label="Open menu"
@@ -82,7 +87,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               </svg>
             </button>
 
-            {/* Desktop nav */}
             <nav className="hidden sm:flex w-full items-center justify-between">
               <NavItem href="/">HOME</NavItem>
               <NavItem href="/about">ABOUT</NavItem>
@@ -91,9 +95,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               <NavItem href="/contact">CONTACT</NavItem>
             </nav>
 
-            {/* Mobile dropdown */}
             {open && (
-              <div className={`absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden z-50`} >
+              <div className="absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden z-50">
                 <NavItem href="/">HOME</NavItem>
                 <NavItem href="/about">ABOUT</NavItem>
                 <NavItem href="/experience">EXPERIENCE</NavItem>
@@ -103,7 +106,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             )}
           </header>
 
-          {/* PAGE CONTENT */}
           <main className="relative h-full overflow-auto">
             {children}
           </main>
