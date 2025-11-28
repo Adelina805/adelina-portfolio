@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 
-function NavItem({ href, children }: { href: string; children: any }) {
+function NavItem({ href, children }: { href: string; children: ReactNode}) {
   return (
     <Link href={href} className="font-bold text-[1.3rem] hover:line-through">
       {children}
