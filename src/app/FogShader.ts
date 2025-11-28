@@ -3,8 +3,6 @@ export const FogShader = {
     u_time: { value: 0 },
     u_mouse: { value: [0.5, 0.5] },
     u_resolution: { value: [1, 1] },
-
-    // allow smooth crossfade like your Tailwind gradients
     u_darkMode: { value: 0.0 }, // 0 = light, 1 = dark
   },
 
