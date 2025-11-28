@@ -25,7 +25,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     }, [dark]);
 
   return (
-    <div className={`${dark ? "bg-black text-white" : "bg-white text-black"} h-dvh p-8 relative`}>
+    <div className={`${dark ? "bg-[radial-gradient(circle_at_center,#295DAA,#000000)] text-white" : "bg-[radial-gradient(circle_at_center,#295DAA,#ffffff)] text-black"} h-dvh p-8 relative`}>
 
       {/* Dark/Light toggle */}
       <div className="absolute bottom-9 left-8 origin-bottom-left -rotate-90 flex items-center gap-2 text-sm select-none">
@@ -51,7 +51,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         <div className="grid h-full grid-rows-[2rem_1fr]">
 
           {/* HEADER */}
-          <header className={`relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2 ${ dark ? "bg-black" : "bg-white"}`}>
+          <header className={`relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2`}>
 
             {/* Mobile button */}
             <button
@@ -84,7 +84,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
             {/* Mobile dropdown */}
             {open && (
-                <div className={`absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden ${dark ? "bg-black" : "bg-white"} z-50`} >                <NavItem href="/">HOME</NavItem>
+                <div className={`absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden z-50`} >
+                <NavItem href="/">HOME</NavItem>
                 <NavItem href="/about">ABOUT</NavItem>
                 <NavItem href="/experience">EXPERIENCE</NavItem>
                 <NavItem href="/projects">PROJECTS</NavItem>
