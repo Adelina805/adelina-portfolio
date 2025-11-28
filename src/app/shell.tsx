@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 function NavItem({ href, children }: { href: string; children: any }) {
@@ -14,6 +14,14 @@ function NavItem({ href, children }: { href: string; children: any }) {
 export default function Shell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+  if (dark) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+    }, [dark]);
 
   return (
     <div className={`${dark ? "bg-black text-white" : "bg-white text-black"} h-dvh p-8 relative`}>
@@ -43,6 +51,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
           {/* HEADER */}
           <header className={`relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2 ${ dark ? "bg-black" : "bg-white"}`}>
+
             {/* Mobile button */}
             <button
               className="sm:hidden p-2 pr-0 focus:outline-none"
@@ -74,8 +83,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
             {/* Mobile dropdown */}
             {open && (
-              <div className={`absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden ${dark ? "bg-black" : "bg-white"}`}>
-                <NavItem href="/">HOME</NavItem>
+                <div className={`absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden ${dark ? "bg-black" : "bg-white"} z-50`} >                <NavItem href="/">HOME</NavItem>
                 <NavItem href="/about">ABOUT</NavItem>
                 <NavItem href="/experience">EXPERIENCE</NavItem>
                 <NavItem href="/projects">PROJECTS</NavItem>
