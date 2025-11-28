@@ -1,42 +1,34 @@
 "use client";
 
-import { useFrame, extend, useThree } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
-import { ShaderMaterial } from "three";
+import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import gsap from "gsap";
 import { FogShader } from "./FogShader";
 
-extend({ ShaderMaterial });
-
-export default function FogBackground() {
-  const materialRef = useRef<ShaderMaterial>(null);
+export default function FogBackground({ dark }: { dark: boolean }) {
+  const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const { viewport } = useThree();
 
-  // Track mouse position
+  // animate dark/light transitions
   useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      if (!materialRef.current) return;
-      materialRef.current.uniforms.u_mouse.value = [
-        e.clientX / window.innerWidth,
-        1.0 - e.clientY / window.innerHeight, // flip Y
-      ];
-    };
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
+    if (!materialRef.current) return;
 
-  // realtime clock
-  useFrame((state, delta) => {
+    gsap.to(materialRef.current.uniforms.u_darkMode, {
+      value: dark ? 1 : 0,
+      duration: 0.7,
+      ease: "power2.inOut",
+    });
+  }, [dark]);
+
+  // animate time uniform
+  useFrame(({ clock }) => {
     if (materialRef.current) {
-      materialRef.current.uniforms.u_time.value += delta;
-      materialRef.current.uniforms.u_resolution.value = [
-        viewport.width,
-        viewport.height,
-      ];
+      materialRef.current.uniforms.u_time.value = clock.getElapsedTime();
     }
   });
-
   return (
-    <mesh scale={[viewport.width * 0.95, viewport.height * 0.93, 1]}>
+    <mesh scale={[viewport.width * 1, viewport.height * 1, 1]}>
       {/* A PERFECT SQUARE PLANE THAT FILLS ENTIRE SCREEN */}
       <planeGeometry args={[1, 1]} />
 

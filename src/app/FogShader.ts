@@ -3,9 +3,12 @@ export const FogShader = {
     u_time: { value: 0 },
     u_mouse: { value: [0.5, 0.5] },
     u_resolution: { value: [1, 1] },
+
+    // NEW — allow smooth crossfade like your Tailwind gradients
+    u_darkMode: { value: 0.0 }, // 0 = light, 1 = dark
   },
 
-  vertexShader: /* glsl */`
+  vertexShader: /* glsl */ `
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -13,98 +16,99 @@ export const FogShader = {
     }
   `,
 
-  fragmentShader: /* glsl */`
+  fragmentShader: /* glsl */ `
     varying vec2 vUv;
     uniform float u_time;
     uniform vec2 u_mouse;
+    uniform float u_darkMode;
 
     // -----------------------------
-    // Simplex Noise (same as before)
+    // Simplex Noise
     // -----------------------------
     vec3 mod289(vec3 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
     vec2 mod289(vec2 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
     vec3 permute(vec3 x){ return mod289(((x*34.0)+1.0)*x); }
 
     float snoise(vec2 v){
-        const vec4 C = vec4(
-          0.211324865405187,
-          0.366025403784439,
-        -0.577350269189626,
-          0.024390243902439
-        );
+      const vec4 C = vec4(
+        0.211324865405187,
+        0.366025403784439,
+      -0.577350269189626,
+        0.024390243902439
+      );
 
-        vec2 i = floor(v + dot(v, C.yy));
-        vec2 x0 = v - i + dot(i, C.xx);
+      vec2 i = floor(v + dot(v, C.yy));
+      vec2 x0 = v - i + dot(i, C.xx);
 
-        vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+      vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
 
-        vec4 x12 = x0.xyxy + C.xxzz;
-        x12.xy -= i1;
+      vec4 x12 = x0.xyxy + C.xxzz;
+      x12.xy -= i1;
 
-        i = mod289(i);
-        vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0))
-                      + i.x + vec3(0.0, i1.x, 1.0));
+      i = mod289(i);
+      vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0))
+                    + i.x + vec3(0.0, i1.x, 1.0));
 
-        vec3 m = max(0.5 - vec3(
-          dot(x0,x0),
-          dot(x12.xy,x12.xy),
-          dot(x12.zw,x12.zw)
-        ), 0.0);
-        m = m*m; m = m*m;
+      vec3 m = max(0.5 - vec3(
+        dot(x0,x0),
+        dot(x12.xy,x12.xy),
+        dot(x12.zw,x12.zw)
+      ), 0.0);
+      m = m*m; m = m*m;
 
-        vec3 x = 2.0 * fract(p * 0.024390243902439) - 1.0;
-        vec3 h = abs(x) - 0.5;
-        vec3 ox = floor(x + 0.5);
-        vec3 a0 = x - ox;
+      vec3 x = 2.0 * fract(p * 0.024390243902439) - 1.0;
+      vec3 h = abs(x) - 0.5;
+      vec3 ox = floor(x + 0.5);
+      vec3 a0 = x - ox;
 
-        m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+      m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
 
-        vec3 g;
-        g.x = a0.x * x0.x + h.x * x0.y;
-        g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+      vec3 g;
+      g.x = a0.x * x0.x + h.x * x0.y;
+      g.yz = a0.yz * x12.xz + h.yz * x12.yw;
 
-        return 130.0 * dot(m, g);
+      return 130.0 * dot(m, g);
     }
 
     void main() {
       vec2 uv = vUv;
 
       // ----------------------------------------------
-      // 1. CENTER OF GRADIENT — “SNAKE” DRIFT MOTION
+      // Drifting "center" like your Tailwind radial gradient
       // ----------------------------------------------
       vec2 center = vec2(0.5, 0.5);
 
-      // mouse influence – subtle push
       center += (u_mouse - 0.5) * 0.1;
 
-      // snake-like drifting using layered sin paths
       center.x += sin(u_time * 0.8) * 0.05 + sin(u_time * 0.23) * 0.02;
       center.y += cos(u_time * 0.6) * 0.05 + cos(u_time * 0.17) * 0.02;
 
-      // -------------------------------------------------
-      // 2. RADIAL GRADIENT
-      // -------------------------------------------------
       float dist = distance(uv, center);
-
-      // smoother falloff (stronger)
       float gradient = smoothstep(0.0, 0.65, dist);
 
-      // -----------------------------------------------
-      // 3. SUBTLE WARPING (not foggy, just alive)
-      // -----------------------------------------------
       float warp = snoise(uv * 4.0 + u_time * 0.2);
-      gradient += warp * 0.04;  // gentle wobble, not cloudy
+      gradient += warp * 0.04;
 
-      // -----------------------------------------------
-      // 4. DARK MODE COLORS
-      // -----------------------------------------------
-      vec3 colorA = vec3(0.05, 0.08, 0.12);   // deep midnight blue
-      vec3 colorB = vec3(0.32, 0.55, 0.95);   // electric cool blue glow
+      // ---------------------------------------
+      // LIGHT MODE GRADIENT (#295DAA → #ffffff)
+      // ---------------------------------------
+      vec3 lightA = vec3(0.16, 0.36, 0.67); // #295DAA
+      vec3 lightB = vec3(1.0, 1.0, 1.0);   // white
 
-      // stronger contrast
-      vec3 color = mix(colorB, colorA, gradient);
+      // ---------------------------------------
+      // DARK MODE GRADIENT (#295DAA → #000000)
+      // ---------------------------------------
+      vec3 darkA = vec3(0.16, 0.36, 0.67); // #295DAA
+      vec3 darkB = vec3(0.0, 0.0, 0.0);    // black
 
-      gl_FragColor = vec4(color, 1.0);
+      // compute each mode independently
+      vec3 lightColor = mix(lightA, lightB, gradient);
+      vec3 darkColor  = mix(darkA,  darkB,  gradient);
+
+      // crossfade identical to your Tailwind layers
+      vec3 finalColor = mix(lightColor, darkColor, u_darkMode);
+
+      gl_FragColor = vec4(finalColor, 1.0);
     }
   `
 };
