@@ -1,6 +1,6 @@
 "use client";
 
-import { useFrame, extend } from "@react-three/fiber";
+import { useFrame, extend, useThree } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 import { ShaderMaterial } from "three";
 import { FogShader } from "./FogShader";
@@ -9,6 +9,7 @@ extend({ ShaderMaterial });
 
 export default function FogBackground() {
   const materialRef = useRef<ShaderMaterial>(null);
+  const { viewport } = useThree();
 
   // Track mouse position
   useEffect(() => {
@@ -27,12 +28,18 @@ export default function FogBackground() {
   useFrame((state, delta) => {
     if (materialRef.current) {
       materialRef.current.uniforms.u_time.value += delta;
+      materialRef.current.uniforms.u_resolution.value = [
+        viewport.width,
+        viewport.height,
+      ];
     }
   });
 
   return (
-    <mesh>
-      <planeGeometry args={[2, 2]} />
+    <mesh scale={[viewport.width * 0.95, viewport.height * 0.93, 1]}>
+      {/* A PERFECT SQUARE PLANE THAT FILLS ENTIRE SCREEN */}
+      <planeGeometry args={[1, 1]} />
+
       <shaderMaterial
         ref={materialRef}
         uniforms={FogShader.uniforms}
