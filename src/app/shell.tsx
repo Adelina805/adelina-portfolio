@@ -113,19 +113,19 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Dark/Light toggle */}
-      <div className="absolute left-[clamp(1.1rem,4vw,2rem)] bottom-[clamp(1.1rem,4vw,2rem)] origin-bottom-left -rotate-90 flex items-center gap-2 text-sm select-none z-50">
+      <div className="absolute left-[clamp(1.1rem,4vw,2rem)] bottom-[clamp(1.1rem,4vw,2rem)] origin-bottom-left -rotate-90 flex items-center gap-4 text-sm select-none z-50">
         <button
           onClick={() => toggleDark(false)}
-          className={`${!dark ? "font-bold underline" : "opacity-60"}`}
+          className={`${!dark ? "font-bold line-through" : "opacity-60"}`}
         >
-          Light
+          LIGHT
         </button>
 
         <button
           onClick={() => toggleDark(true)}
-          className={`${dark ? "font-bold underline" : "opacity-60"}`}
+          className={`${dark ? "font-bold line-through" : "opacity-60"}`}
         >
-          Dark
+          DARK
         </button>
       </div>
     </div>

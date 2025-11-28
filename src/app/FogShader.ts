@@ -4,7 +4,7 @@ export const FogShader = {
     u_mouse: { value: [0.5, 0.5] },
     u_resolution: { value: [1, 1] },
 
-    // NEW — allow smooth crossfade like your Tailwind gradients
+    // allow smooth crossfade like your Tailwind gradients
     u_darkMode: { value: 0.0 }, // 0 = light, 1 = dark
   },
 
@@ -90,9 +90,9 @@ export const FogShader = {
       gradient += warp * 0.04;
 
       // ---------------------------------------
-      // LIGHT MODE GRADIENT (#295DAA → #ffffff)
+      // LIGHT MODE GRADIENT (#6BA4E5 → #ffffff)
       // ---------------------------------------
-      vec3 lightA = vec3(0.16, 0.36, 0.67); // #295DAA
+      vec3 lightA = vec3(0.16, 0.36, 0.67); // #6BA4E5
       vec3 lightB = vec3(1.0, 1.0, 1.0);   // white
 
       // ---------------------------------------
