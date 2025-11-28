@@ -17,38 +17,26 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-  if (dark) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-    }, [dark]);
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [dark]);
 
-  return (
-    <div className={`${dark ? "bg-[radial-gradient(circle_at_center,#295DAA,#000000)] text-white" : "bg-[radial-gradient(circle_at_center,#295DAA,#ffffff)] text-black"} h-dvh p-8 relative`}>
+return (
+  <div
+    className={`${dark
+      ? "bg-[radial-gradient(circle_at_center,#295DAA,#000000)] text-white"
+      : "bg-[radial-gradient(circle_at_center,#295DAA,#ffffff)] text-black"
+    } h-dvh p-[clamp(1rem,4vw,2rem)] relative`}
+  >
 
-      {/* Dark/Light toggle */}
-      <div className="absolute bottom-9 left-8 origin-bottom-left -rotate-90 flex items-center gap-2 text-sm select-none">
-        <button
-          onClick={() => setDark(false)}
-          className={`${!dark ? "font-bold underline" : "opacity-60"} cursor-pointer`}
-        >
-          Light
-        </button>
+    {/* border box */}
+    <div className="relative h-full w-full border-2 overflow-hidden">
 
-        <span>|</span>
-
-        <button
-          onClick={() => setDark(true)}
-          className={`${dark ? "font-bold underline" : "opacity-60"} cursor-pointer`}
-        >
-          Dark
-        </button>
-      </div>
-
-      {/* border box */}
-      <div className="h-full w-full border-2 overflow-hidden">
-        <div className="grid h-full grid-rows-[2rem_1fr]">
+      {/* content … */}
+      <div className="grid h-full grid-rows-[2rem_1fr]">
 
           {/* HEADER */}
           <header className={`relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2`}>
@@ -98,10 +86,27 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           <main className="relative h-full overflow-auto">
             {children}
           </main>
-
-        </div>
       </div>
+    </div>
 
+    {/* Dark/Light toggle */}
+    <div className="absolute left-[clamp(1.1rem,4vw,2rem)] bottom-[clamp(1.1rem,4vw,2rem)] origin-bottom-left -rotate-90 flex items-center gap-2 text-sm select-none z-50">
+      <button
+        onClick={() => setDark(false)}
+        className={`${!dark ? "font-bold underline" : "opacity-60"} cursor-pointer`}
+      >
+        Light
+      </button>
+
+      <span>|</span>
+
+      <button
+        onClick={() => setDark(true)}
+        className={`${dark ? "font-bold underline" : "opacity-60"} cursor-pointer`}
+      >
+        Dark
+      </button>
+    </div>
     </div>
   );
 }
