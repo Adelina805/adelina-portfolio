@@ -69,40 +69,40 @@ export const FogShader = {
     void main() {
       vec2 uv = vUv;
 
-      // ------------------------------------------------
-      // 1. Animate the gradient center for drifting fog
-      // ------------------------------------------------
+      // ----------------------------------------------
+      // 1. CENTER OF GRADIENT — “SNAKE” DRIFT MOTION
+      // ----------------------------------------------
       vec2 center = vec2(0.5, 0.5);
 
-      // Mouse influence
-      center += (u_mouse - 0.5) * 0.15;
+      // mouse influence – subtle push
+      center += (u_mouse - 0.5) * 0.1;
 
-      // Slow drifting orbit motion
-      center.x += sin(u_time * 0.07) * 0.03;
-      center.y += cos(u_time * 0.05) * 0.03;
+      // snake-like drifting using layered sin paths
+      center.x += sin(u_time * 0.8) * 0.05 + sin(u_time * 0.23) * 0.02;
+      center.y += cos(u_time * 0.6) * 0.05 + cos(u_time * 0.17) * 0.02;
 
-      // Base radial distance
+      // -------------------------------------------------
+      // 2. RADIAL GRADIENT
+      // -------------------------------------------------
       float dist = distance(uv, center);
 
-      // Base gradient (reverse = darker center)
-      float gradient = smoothstep(0.0, 0.9, dist);
+      // smoother falloff (stronger)
+      float gradient = smoothstep(0.0, 0.65, dist);
 
-      // -----------------------------------------
-      // 2. Noise-based surface motion (visible)
-      // -----------------------------------------
-      float noiseWarp = snoise(uv * 3.0 + u_time * 0.1);
-      float noiseSmall = snoise(uv * 10.0 + u_time * 0.2);
+      // -----------------------------------------------
+      // 3. SUBTLE WARPING (not foggy, just alive)
+      // -----------------------------------------------
+      float warp = snoise(uv * 4.0 + u_time * 0.2);
+      gradient += warp * 0.04;  // gentle wobble, not cloudy
 
-      gradient += noiseWarp * 0.08;   // big soft movement
-      gradient += noiseSmall * 0.015; // subtle shimmer
+      // -----------------------------------------------
+      // 4. DARK MODE COLORS
+      // -----------------------------------------------
+      vec3 colorA = vec3(0.05, 0.08, 0.12);   // deep midnight blue
+      vec3 colorB = vec3(0.32, 0.55, 0.95);   // electric cool blue glow
 
-      // -----------------------------------------
-      // 3. Final color blend
-      // -----------------------------------------
-      vec3 colorA = vec3(0.161, 0.365, 0.667); // #295DAA
-      vec3 colorB = vec3(1.0);
-
-      vec3 color = mix(colorA, colorB, gradient);
+      // stronger contrast
+      vec3 color = mix(colorB, colorA, gradient);
 
       gl_FragColor = vec4(color, 1.0);
     }
