@@ -8,7 +8,7 @@ export default function ExperiencePage() {
       <h1>EXPERIENCE</h1>
     </div>
 
-      <NextButton href="/projects" label="Look at my cool projects >>" />
+      <NextButton href="/projects" label="See my cool projects >>" />
     </section>
   );
 }

@@ -8,7 +8,7 @@ export default function AboutPage() {
       <h1>ABOUT</h1>
     </div>
 
-      <NextButton href="/experience" label="Check out my experiences >>" />
+      <NextButton href="/experience" label="View my experiences >>" />
     </section>
   );
 }
