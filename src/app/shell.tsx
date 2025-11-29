@@ -94,7 +94,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ADELINA MARTINEZ
           </h1>
 
-          <div className="w-48 h-1 bg-black/20 overflow-hidden">
+          <div className="w-55 h-1 bg-black/20 overflow-hidden">
             <div className="h-full bg-black animate-loading-bar"></div>
           </div>
         </div>
