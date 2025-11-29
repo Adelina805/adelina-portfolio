@@ -19,8 +19,8 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
       href={href}
-      className={`font-bold hover:line-through ${
-        isActive ? "line-through" : ""
+      className={`opacity-60 hover:line-through ${
+        isActive ? "line-through font-bold opacity-100" : ""
       }`}
     >
       {children}
@@ -111,7 +111,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         >
 
           {/* Bottom Toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 hover:line-through">
             <button
               onClick={() => toggleDark(false)}
               className={`${!dark ? "font-bold line-through" : "opacity-60"}`}
@@ -128,11 +128,11 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
           {/* Top Nav */}
           <div className="flex items-center gap-4">
-            <NavItem href="/">HOME</NavItem>
-            <NavItem href="/about">ABOUT</NavItem>
-            <NavItem href="/experience">EXPERIENCE</NavItem>
-            <NavItem href="/projects">PROJECTS</NavItem>
             <NavItem href="/contact">CONTACT</NavItem>
+            <NavItem href="/projects">PROJECTS</NavItem>
+            <NavItem href="/experience">EXPERIENCE</NavItem>
+            <NavItem href="/about">ABOUT</NavItem>
+            <NavItem href="/">HOME</NavItem>
           </div>
 
         </div>
