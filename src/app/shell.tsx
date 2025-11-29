@@ -84,7 +84,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       {isLoading && (
         <div
           className={`
-            fixed inset-0 z-[9999] flex flex-col items-center justify-center
+            fixed inset-0 z-9999 flex flex-col items-center justify-center
             bg-white text-black
             transition-opacity duration-700
             ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}
