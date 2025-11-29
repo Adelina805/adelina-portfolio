@@ -4,15 +4,24 @@ import { useEffect, useState } from "react";
 
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    if (isTouch) return;
+
     const move = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, []);
+  }, [isTouch]);
+
+  if (isTouch) return null;
 
   return (
     <div
