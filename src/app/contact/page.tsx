@@ -8,7 +8,7 @@ export default function ContactPage() {
       <h1>CONTACT</h1>
     </div>
 
-      <NextButton href="/" label="That was fun! Do it again >> >>" />
+      <NextButton href="/" label="That was fun! Do it again >>" />
     </section>
   );
 }
