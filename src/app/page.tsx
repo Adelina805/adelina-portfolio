@@ -1,3 +1,5 @@
+import NextButton from "./NextButton";
+
 export default function HomePage() {
   return (
     <section className="relative z-10 h-full flex items-center justify-center">
@@ -20,6 +22,8 @@ export default function HomePage() {
           a developer who designs.
         </p>
       </div>
+
+      <NextButton href="/about" label="Get to know me >>" />
     </section>
   );
 }
