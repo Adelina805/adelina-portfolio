@@ -1,14 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import { Canvas } from "@react-three/fiber";
-import FogBackground from "./FogBackground"; // ← add this
+import FogBackground from "./FogBackground";
+import { usePathname } from "next/navigation";
 
-function NavItem({ href, children }: { href: string; children: ReactNode}) {
+function NavItem({ href, children }: { href: string; children: ReactNode }) {
+  const pathname = usePathname();
+  console.log("NavItem", { href, pathname });
+
+  const isRoot = href === "/";
+  const isActive = isRoot
+    ? pathname === "/"
+    : pathname.startsWith(href);
+
   return (
-    <Link href={href} className="font-bold text-[1.3rem] hover:line-through">
+    <Link
+      href={href}
+      className={`font-bold hover:line-through ${
+        isActive ? "line-through" : ""
+      }`}
+    >
       {children}
     </Link>
   );
@@ -17,6 +31,22 @@ function NavItem({ href, children }: { href: string; children: ReactNode}) {
 export default function Shell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
+
+  // --- calculate box height ---
+  const borderRef = useRef<HTMLDivElement>(null);
+  const [railLength, setRailLength] = useState(0);
+
+  useEffect(() => {
+    function updateSize() {
+      if (borderRef.current) {
+        setRailLength(borderRef.current.offsetHeight);
+      }
+    }
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  // -------------
 
   function toggleDark(isDark: boolean) {
     setDark(isDark);
@@ -38,7 +68,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       {/* SHADER BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
         <Canvas>
-            <FogBackground dark={dark} />
+          <FogBackground dark={dark} />
         </Canvas>
       </div>
 
@@ -61,72 +91,51 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         `}
       />
 
-      {/* border box */}
-      <div className="relative h-full w-full border-2 overflow-hidden">
-        <div className="grid h-full grid-rows-[2rem_1fr]">
+      {/* Wrapper */}
+      <div className="relative h-full w-full">
 
-          {/* HEADER */}
-          <header className="relative h-10 flex items-center justify-end px-4 sm:px-10 border-b-2">
-
-            <button
-              className="sm:hidden p-2 pr-0 focus:outline-none"
-              aria-label="Open menu"
-              type="button"
-              onClick={() => setOpen(!open)}
-            >
-              <svg
-                className="h-6 w-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="square"
-                strokeLinejoin="round"
-              >
-                <path d="M3 6h18M3 12h18M3 18h18" />
-              </svg>
-            </button>
-
-            <nav className="hidden sm:flex w-full items-center justify-between">
-              <NavItem href="/">HOME</NavItem>
-              <NavItem href="/about">ABOUT</NavItem>
-              <NavItem href="/experience">EXPERIENCE</NavItem>
-              <NavItem href="/projects">PROJECTS</NavItem>
-              <NavItem href="/contact">CONTACT</NavItem>
-            </nav>
-
-            {open && (
-              <div className="absolute top-full right-0 w-full border-b-2 px-4 flex flex-col sm:hidden z-50">
-                <NavItem href="/">HOME</NavItem>
-                <NavItem href="/about">ABOUT</NavItem>
-                <NavItem href="/experience">EXPERIENCE</NavItem>
-                <NavItem href="/projects">PROJECTS</NavItem>
-                <NavItem href="/contact">CONTACT</NavItem>
-              </div>
-            )}
-          </header>
-
+        {/* border box */}
+        <div
+          ref={borderRef}
+          className="relative h-full w-full border-2 overflow-hidden"
+        >
           <main className="relative h-full overflow-auto">
             {children}
           </main>
         </div>
-      </div>
 
-      {/* Dark/Light toggle */}
-      <div className="absolute left-[clamp(1.1rem,4vw,2rem)] bottom-[clamp(1.1rem,4vw,2rem)] origin-bottom-left -rotate-90 flex items-center gap-4 text-sm select-none z-50">
-        <button
-          onClick={() => toggleDark(false)}
-          className={`${!dark ? "font-bold line-through" : "opacity-60"}`}
+        {/* Vertical Side Rail */}
+        <div
+          className="absolute origin-left -left-2 flex flex-row -rotate-90 justify-between text-sm select-none z-50 pointer-events-auto px-7 py-4 gap-8"
+          style={{ width: railLength + 50 }}
         >
-          LIGHT
-        </button>
 
-        <button
-          onClick={() => toggleDark(true)}
-          className={`${dark ? "font-bold line-through" : "opacity-60"}`}
-        >
-          DARK
-        </button>
+          {/* Bottom Toggle */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => toggleDark(false)}
+              className={`${!dark ? "font-bold line-through" : "opacity-60"}`}
+            >
+              LIGHT
+            </button>
+            <button
+              onClick={() => toggleDark(true)}
+              className={`${dark ? "font-bold line-through" : "opacity-60"}`}
+            >
+              DARK
+            </button>
+          </div>
+
+          {/* Top Nav */}
+          <div className="flex items-center gap-4">
+            <NavItem href="/">HOME</NavItem>
+            <NavItem href="/about">ABOUT</NavItem>
+            <NavItem href="/experience">EXPERIENCE</NavItem>
+            <NavItem href="/projects">PROJECTS</NavItem>
+            <NavItem href="/contact">CONTACT</NavItem>
+          </div>
+
+        </div>
       </div>
     </div>
   );
