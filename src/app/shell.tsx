@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Canvas } from "@react-three/fiber";
 import FogBackground from "./FogBackground";
 import { usePathname } from "next/navigation";
+import CustomCursor from "./CustomCursor";
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
   const pathname = usePathname();
@@ -64,6 +65,9 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         ${dark ? "text-white" : "text-black"}
       `}
     >
+
+      {/* CUSTOM CURSOR */}
+      <CustomCursor />
 
       {/* SHADER BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
