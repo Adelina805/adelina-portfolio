@@ -142,7 +142,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           </main>
         </div>
 
-        {/* Vertical Side Rail */}
+        {/* Vertical Side Rail LEFT */}
         <div
           className="absolute origin-left -left-2 flex flex-row -rotate-90 justify-between text-sm select-none z-50 pointer-events-auto px-7 py-4 gap-8"
           style={{ width: railLength + 50 }}
@@ -173,6 +173,50 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <NavItem href="/">HOME</NavItem>
           </div>
 
+        </div>
+
+        {/* Vertical Side Rail RIGHT */}
+        <div
+          className="absolute origin-right -right-2 flex flex-row rotate-90 justify-between text-sm select-none z-50 pointer-events-auto px-7 py-4 gap-8"
+          style={{ width: railLength + 50 }}
+        >
+          {/* Top Right – Name */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="opacity-60 hover:line-through line-through"
+            >
+              ADELINA MARTINEZ
+            </Link>
+          </div>
+
+          {/* Bottom Right – Socials */}
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:adelina.martinez805@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-60 hover:line-through"
+            >
+              MAIL
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adelina-martinez/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-60 hover:line-through"
+            >
+              LINKEDIN
+            </a>
+            <a
+              href="https://github.com/Adelina805"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-60 hover:line-through"
+            >
+              GITHUB
+            </a>
+          </div>
         </div>
       </div>
     </div>
