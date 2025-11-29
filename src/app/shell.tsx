@@ -30,8 +30,22 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
 }
 
 export default function Shell({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    // Start fade-out after animation finishes
+    const timer = setTimeout(() => setFadeOut(true), 400);
+
+    // Fully remove after fade duration
+    const removeTimer = setTimeout(() => setIsLoading(false), 600);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(removeTimer);
+    };
+  }, []);
 
   // --- calculate box height ---
   const borderRef = useRef<HTMLDivElement>(null);
@@ -65,6 +79,26 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         ${dark ? "text-white" : "text-black"}
       `}
     >
+
+      {/* LOADING SCREEN */}
+      {isLoading && (
+        <div
+          className={`
+            fixed inset-0 z-[9999] flex flex-col items-center justify-center
+            bg-white text-black
+            transition-opacity duration-700
+            ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}
+          `}
+        >
+          <h1 className="text-xl mb-6 tracking-widest">
+            ADELINA MARTINEZ
+          </h1>
+
+          <div className="w-48 h-1 bg-black/20 overflow-hidden">
+            <div className="h-full bg-black animate-loading-bar"></div>
+          </div>
+        </div>
+      )}
 
       {/* CUSTOM CURSOR */}
       <CustomCursor />

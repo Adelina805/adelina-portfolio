@@ -17,7 +17,7 @@ export default function CustomCursor() {
   return (
     <div
       className="
-        pointer-events-none fixed top-0 left-0 z-[9999]
+        pointer-events-none fixed top-0 left-0 z-9999
         w-6 h-6 rounded-full bg-white
         mix-blend-difference
         backdrop-grayscale
