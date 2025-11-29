@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import FogBackground from "./FogBackground";
 import { usePathname } from "next/navigation";
 import CustomCursor from "./CustomCursor";
+import ThemeContext from "./ThemeContext";
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
   const pathname = usePathname();
@@ -73,6 +74,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }, [dark]);
 
   return (
+    <ThemeContext.Provider value={{ dark, toggleDark }}>
     <div
       className={`
         h-dvh p-[clamp(1rem,4vw,2rem)] relative overflow-hidden
@@ -220,5 +222,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
     </div>
+    </ThemeContext.Provider>
   );
 }
