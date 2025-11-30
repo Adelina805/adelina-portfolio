@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
@@ -13,11 +13,25 @@ export default function CustomCursor() {
   useEffect(() => {
     if (isTouch) return;
 
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+
     const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     };
 
+    const update = () => {
+      cursor.style.transform = `translate(${mouseX - 16}px, ${mouseY - 16}px)`;
+      requestAnimationFrame(update);
+    };
+
+    requestAnimationFrame(update);
     window.addEventListener("mousemove", move);
+
     return () => window.removeEventListener("mousemove", move);
   }, [isTouch]);
 
@@ -25,16 +39,12 @@ export default function CustomCursor() {
 
   return (
     <div
+      ref={cursorRef}
       className="
         pointer-events-none fixed top-0 left-0 z-9999
         w-6 h-6 rounded-full bg-white
-        mix-blend-difference
-        backdrop-grayscale
-        transition-transform duration-75 ease-linear
+        mix-blend-difference backdrop-grayscale
       "
-      style={{
-        transform: `translate(${pos.x - 16}px, ${pos.y - 16}px)`,
-      }}
     />
   );
 }

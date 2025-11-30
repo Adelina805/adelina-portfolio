@@ -16,7 +16,7 @@ export default function FogBackground({ dark }: { dark: boolean }) {
 
     gsap.to(materialRef.current.uniforms.u_darkMode, {
       value: dark ? 1 : 0,
-      duration: 0.7,
+      duration: 0.4,
       ease: "power2.inOut",
     });
   }, [dark]);

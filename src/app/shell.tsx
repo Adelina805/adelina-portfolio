@@ -8,6 +8,7 @@ import FogBackground from "./FogBackground";
 import { usePathname } from "next/navigation";
 import CustomCursor from "./CustomCursor";
 import ThemeContext from "./ThemeContext";
+import { Perf } from 'r3f-perf';
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
   const pathname = usePathname();
@@ -37,10 +38,10 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Start fade-out after animation finishes
-    const timer = setTimeout(() => setFadeOut(true), 400);
+    const timer = setTimeout(() => setFadeOut(true), 0);
 
     // Fully remove after fade duration
-    const removeTimer = setTimeout(() => setIsLoading(false), 600);
+    const removeTimer = setTimeout(() => setIsLoading(false), 200);
 
     return () => {
       clearTimeout(timer);
@@ -88,7 +89,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           className={`
             fixed inset-0 z-9999 flex flex-col items-center justify-center
             bg-white text-black
-            transition-opacity duration-700
+            transition-opacity duration-300
             ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}
           `}
         >
@@ -108,11 +109,12 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       {/* SHADER BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
         <Canvas>
+          <Perf position="top-left" minimal />
           <FogBackground dark={dark} />
         </Canvas>
       </div>
 
-      {/* CROSSFADE BACKGROUNDS */}
+      {/* CROSSFADE BACKGROUNDS
       <div
         className={`
           pointer-events-none absolute inset-0 -z-10
@@ -129,7 +131,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           transition-opacity duration-700 ease-in-out
           ${dark ? "opacity-100" : "opacity-0"}
         `}
-      />
+      /> */}
 
       {/* Wrapper */}
       <div className="relative h-full w-full">
