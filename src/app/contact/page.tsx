@@ -2,7 +2,7 @@ import NextButton from "../NextButton";
 
 export default function ContactPage() {
   return (
-    <section className="relative min-h-[90vh] px-4 flex flex-col">
+    <section className="relative h-full px-4 flex flex-col">
 
     <h1
       className="
