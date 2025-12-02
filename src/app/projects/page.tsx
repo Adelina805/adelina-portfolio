@@ -17,6 +17,9 @@ export default function ProjectsPage() {
     >
       PROJECTS
     </h1>
+    <p className="mt-5 mx-auto text-center text-base">
+      Cool stuff i’ve designed and developed
+    </p>
 
       <NextButton href="/contact" label="Don’t be shy, say hello! >>" />
     </section>

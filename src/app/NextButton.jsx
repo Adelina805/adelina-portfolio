@@ -14,7 +14,7 @@ export default function NextButton({ href, label }) {
         right-[clamp(1rem,4vw,2rem)]
         bottom-[calc(clamp(1rem,4vw,2rem))]
         z-50 px-5 py-3 font-semibold tracking-wide transition hover:scale-105
-        ${dark ? "bg-black/10 text-white" : "bg-white/10 text-black"}
+        ${dark ? "bg-black/0 text-white" : "bg-white/0 text-black"}
       `}
     >
       {label}

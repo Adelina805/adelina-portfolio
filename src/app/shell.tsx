@@ -109,7 +109,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       {/* SHADER BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none">
         <Canvas>
-          <Perf position="top-left" minimal />
+          {/* <Perf position="top-left" minimal /> */}
           <FogBackground dark={dark} />
         </Canvas>
       </div>

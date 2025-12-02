@@ -1,3 +1,4 @@
+import { Link } from "lucide-react";
 import NextButton from "../NextButton";
 
 export default function AboutPage() {
@@ -17,8 +18,11 @@ export default function AboutPage() {
     >
       ABOUT
     </h1>
+    <p className="mt-5 mx-auto text-center text-base">
+      Student, Designer, Developer
+    </p>
 
-      <NextButton href="/experience" label="View my experiences >>" />
+    <NextButton href="/experience" label="View my experiences >>" />
     </section>
   );
 }

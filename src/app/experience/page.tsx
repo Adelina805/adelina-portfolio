@@ -17,6 +17,9 @@ export default function ExperiencePage() {
     >
       EXPERIENCE
     </h1>
+    <p className="mt-5 mx-auto text-center text-base">
+      Professional work history and achievements
+    </p>
 
       <NextButton href="/projects" label="See my cool projects >>" />
     </section>
