@@ -4,29 +4,27 @@ export default function AboutPage() {
   return (
     <section
       className="
-        relative h-full px-4 pt-10 md:pt-25 max-w-255 mx-auto
+        relative h-full md:h-auto px-4 pt-10 md:pt-25 max-w-255 mx-auto
 
         /* Mobile: stacked flex with order */
         flex flex-col
 
         /* Desktop: switch to 2-column grid */
-        md:grid md:grid-cols-[20rem_2fr] md:gap-10
+        md:grid md:grid-cols-[20rem_2fr] md:gap-10 md:content-start
       "
     >
       {/* IMAGE — mobile order 1, desktop left column top */}
-      <div className="order-1 md:order-0 md:col-start-0 md:row-start-0">
-        <div className="aspect-12/10 w-full min-h-66.5 mb-10 overflow-hidden border-2">
+      <div className="order-1 md:order-0 md:col-start-1 md:row-start-1">
+        <div className="aspect-12/10 w-full min-h-66.5 mb-10 md:mb-0 overflow-hidden border-2">
           <img src="/adelina/adelina-1.jpg" className="w-full h-full object-cover" />
         </div>
       </div>
 
       {/* QUICK INFO — mobile order 3, desktop left column bottom */}
       <div className="
-          order-3 mb-10 md:order-0 md:col-start-1 md:row-start-2
-          text-base leading-relaxed
-        "
+          order-3 md:order-0 md:col-start-1 md:row-start-2 text-base leading-relaxed pb-20"
       >
-        <div>🎓 Computer Science, Web Design @ SDSU</div>
+        <div>🎓 Computer Science, Web Design @SDSU</div>
         <div>💻 UX/UI Designer & Frontend Developer</div>
         <div>📍 Currently located in San Diego, CA</div>
         <div>🏠 Place of origin: Port Hueneme, CA</div>
@@ -60,7 +58,7 @@ export default function AboutPage() {
           diverse skill sets.
           <br />
           <br />
-          When I’m not studying, working, coding or designing, you can usually
+          When I’m not studying, working, coding, or designing, you can usually
           find me at the beach 🏖️ playing volleyball 🏐, surfing 🌊, or reading 📚.
           I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮,
           exploring new places ✈️, and pondering 🤔.
