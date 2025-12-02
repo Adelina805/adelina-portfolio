@@ -4,37 +4,45 @@ export default function AboutPage() {
   return (
     <section
       className="
-        relative h-full px-4 pt-10 md:pt-25 flex flex-col md:flex-row gap-10 max-w-255 mx-auto
+        relative h-full px-4 pt-10 md:pt-25 max-w-255 mx-auto
+
+        /* Mobile: stacked flex with order */
+        flex flex-col
+
+        /* Desktop: switch to 2-column grid */
+        md:grid md:grid-cols-[20rem_2fr] md:gap-10
       "
     >
-      {/* LEFT COLUMN */}
-      <div className="w-full md:w-[20rem] flex flex-col shrink-0">
-
-        {/* IMAGE (10:12 aspect, fills container) */}
-        <div className="aspect-12/10 w-full min-h-66.5 overflow-hidden border-2">
-        <img src="/adelina/adelina-1.jpg" className="w-full object-cover" />
-        </div>
-
-        {/* QUICK INFO */}
-        <div className="mt-6 text-[1rem] leading-relaxed space-y-3">
-          <div>🎓 Computer Science, Web Design @ SDSU</div>
-          <div>💻 UX/UI Designer & Frontend Developer</div>
-          <div>📍 Currently located in San Diego, CA</div>
-          <div>🏠 Place of origin: Port Hueneme, CA</div>
-          <div>🎧 Listening to: indie rock, alternative</div>
-          <div>📚 Reading: probably bell hooks</div>
-          <div>
-            ⭐ Current Role(s): Instructional Design Student Assistant •
-            Research Assistant • Groundwork Books Developer
-          </div>
+      {/* IMAGE — mobile order 1, desktop left column top */}
+      <div className="order-1 md:order-0 md:col-start-0 md:row-start-0">
+        <div className="aspect-12/10 w-full min-h-66.5 mb-10 overflow-hidden border-2">
+          <img src="/adelina/adelina-1.jpg" className="w-full h-full object-cover" />
         </div>
       </div>
 
-      {/* RIGHT COLUMN */}
-      <div className="flex flex-col md:min-w-[20rem] md:max-w-[40.4rem]">
+      {/* QUICK INFO — mobile order 3, desktop left column bottom */}
+      <div className="
+          order-3 mb-10 md:order-0 md:col-start-1 md:row-start-2
+          text-base leading-relaxed
+        "
+      >
+        <div>🎓 Computer Science, Web Design @ SDSU</div>
+        <div>💻 UX/UI Designer & Frontend Developer</div>
+        <div>📍 Currently located in San Diego, CA</div>
+        <div>🏠 Place of origin: Port Hueneme, CA</div>
+        <div>🎧 Listening to: indie rock, alternative</div>
+        <div>📚 Reading: probably bell hooks</div>
+        <div>
+          ⭐ Current Role(s): Instructional Design Student Assistant • Research
+          Assistant • Groundwork Books Developer
+        </div>
+      </div>
+
+      {/* TEXT — mobile order 2, desktop full right column */}
+      <div className="order-2 md:order-0 md:col-start-2 md:row-span-2">
         <h1 className="font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
-          Hello! my name is <span className="line-through hover:no-underline">Adelina Martinez</span>, a student, designer, and developer
-          based in San Diego, CA
+          Hello! my name is <span className="line-through hover:no-underline">Adelina Martinez</span>,
+          a student, designer, and developer based in San Diego, CA
         </h1>
 
         <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
