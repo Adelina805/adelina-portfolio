@@ -11,8 +11,8 @@ export default function AboutPage() {
       <div className="w-full md:w-[20rem] flex flex-col shrink-0">
 
         {/* IMAGE (10:12 aspect, fills container) */}
-        <div className="aspect-12/10 w-full overflow-hidden border-2">
-        <img src="/AdelinaM1.png" className="w-full object-fill" />
+        <div className="aspect-12/10 w-full min-h-66.5 overflow-hidden border-2">
+        <img src="/adelina/adelina-1.jpg" className="w-full object-cover" />
         </div>
 
         {/* QUICK INFO */}
@@ -20,7 +20,7 @@ export default function AboutPage() {
           <div>🎓 Computer Science, Web Design @ SDSU</div>
           <div>💻 UX/UI Designer & Frontend Developer</div>
           <div>📍 Currently located in San Diego, CA</div>
-          <div>🏠 Origin: Port Hueneme, CA 🇺🇸 🇲🇽 🇩🇪</div>
+          <div>🏠 Place of origin: Port Hueneme, CA</div>
           <div>🎧 Listening to: indie rock, alternative</div>
           <div>📚 Reading: probably bell hooks</div>
           <div>
@@ -33,7 +33,7 @@ export default function AboutPage() {
       {/* RIGHT COLUMN */}
       <div className="flex flex-col md:min-w-[20rem] md:max-w-[40.4rem]">
         <h1 className="font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
-          Hello! my name is Adelina Martinez, a student, designer, and developer
+          Hello! my name is <span className="line-through hover:no-underline">Adelina Martinez</span>, a student, designer, and developer
           based in San Diego, CA
         </h1>
 
@@ -45,9 +45,9 @@ export default function AboutPage() {
           I am currently attending <strong>San Diego State University</strong>{" "}
           pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
           <strong>Website Design</strong>. I am passionate about UX/UI Design,
-          Frontend Development, Web Development, Graphic Design, and/or anything
+          Frontend Development, Web Development, Graphic Design, and/or <em>anything
           that blends visually creative design with technical engineering and
-          user interaction. I am a proud <strong>wearer of many hats</strong> and
+          user interaction.</em> I am a proud <u>wearer of many hats</u> and
           believe the most meaningful innovation happens at the intersection of
           diverse skill sets.
           <br />
