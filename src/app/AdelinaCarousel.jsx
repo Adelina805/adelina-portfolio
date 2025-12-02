@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Move, MoveLeft, MoveRight } from "lucide-react";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 export default function AdelinaCarousel() {
   const images = [
@@ -14,6 +14,11 @@ export default function AdelinaCarousel() {
 
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
+
+  // Swipe tracking
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const SWIPE_THRESHOLD = 50; // px drag required
 
   // Go to the previous slide
   const prevSlide = () => {
@@ -44,8 +49,42 @@ export default function AdelinaCarousel() {
     return () => clearInterval(intervalRef.current);
   }, []);
 
+  // Handles swipe start
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  // Track swipe movement
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  // Decide direction
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (distance > SWIPE_THRESHOLD) {
+      // swipe left
+      nextSlide();
+    } else if (distance < -SWIPE_THRESHOLD) {
+      // swipe right
+      prevSlide();
+    }
+
+    // reset
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
-    <div className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden">
+    <div
+      className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* IMAGE */}
       <img
         src={images[index]}
@@ -68,6 +107,21 @@ export default function AdelinaCarousel() {
         <MoveRight size={28} />
       </button>
 
+      {/* DOT INDICATORS */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIndex(i);
+              resetAutoScroll();
+            }}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
+              i === index ? "bg-black/80 scale-110" : "bg-black/30"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
