@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
+import { useTheme } from "./ThemeContext";
 
 export default function AdelinaCarousel() {
   const images = [
@@ -12,6 +13,7 @@ export default function AdelinaCarousel() {
     "/adelina/adelina-5.jpg",
   ];
 
+  const { dark } = useTheme();       // <-- get dark mode status
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
 
@@ -109,18 +111,25 @@ export default function AdelinaCarousel() {
 
       {/* DOT INDICATORS */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              setIndex(i);
-              resetAutoScroll();
-            }}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              i === index ? "bg-black/80 scale-110" : "bg-black/30"
-            }`}
-          />
-        ))}
+        {images.map((_, i) => {
+          const isActive = i === index;
+          const dotColor = isActive
+            ? dark ? "bg-white/80" : "bg-black/80"
+            : dark ? "bg-white/30" : "bg-black/30";
+
+          return (
+            <button
+              key={i}
+              onClick={() => {
+                setIndex(i);
+                resetAutoScroll();
+              }}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                isActive ? "scale-110" : ""
+              } ${dotColor}`}
+            />
+          );
+        })}
       </div>
     </div>
   );
