@@ -1,4 +1,5 @@
 import NextButton from "../NextButton";
+import AdelinaCarousel from "../AdelinaCarousel";
 
 export default function AboutPage() {
   return (
@@ -12,10 +13,7 @@ export default function AboutPage() {
         {/* IMAGE (mobile order 1) */}
         <div className="mb-10">
           <div className="aspect-12/10 w-full min-h-66.5 overflow-hidden border-2">
-            <img
-              src="/adelina/adelina-1.jpg"
-              className="w-full h-full object-cover"
-            />
+            <AdelinaCarousel />
           </div>
         </div>
 
@@ -52,7 +50,7 @@ export default function AboutPage() {
           </p>
 
         {/* QUICK INFO (mobile order 3) */}
-        <div className="mt-10 text-base leading-relaxed">
+        <div className="mt-10 text-base leading-loose">
           <div>🎓 Computer Science, Web Design <span className="text-sm">@SDSU</span></div>
           <div>💻 UX/UI Designer & Frontend Developer</div>
           <div>📍 Currently located in San Diego, CA</div>
@@ -72,21 +70,18 @@ export default function AboutPage() {
       {/* ---------------------- */}
       {/*        DESKTOP         */}
       {/* ---------------------- */}
-      <div className="hidden md:flex md:flex-row md:gap-10">
+      <div className="hidden md:flex md:flex-row md:gap-10 pb-20">
 
         {/* LEFT COLUMN = image + quick info */}
-        <div className="flex flex-col w-[20rem] flex-shrink-0">
+        <div className="flex flex-col w-[20rem] shrink-0">
 
           {/* IMAGE */}
           <div className="aspect-12/10 w-full min-h-66.5 mb-10 overflow-hidden border-2">
-            <img
-              src="/adelina/adelina-1.jpg"
-              className="w-full h-full object-cover"
-            />
+            <AdelinaCarousel />
           </div>
 
           {/* QUICK INFO */}
-          <div className="text-base leading-relaxed pb-20">
+          <div className="text-base leading-loose">
             <div>🎓 Computer Science, Web Design <span className="text-sm">@SDSU</span></div>
             <div>💻 UX/UI Designer & Frontend Developer</div>
             <div>📍 Currently located in San Diego, CA</div>
@@ -132,9 +127,6 @@ export default function AboutPage() {
             I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮,
             exploring new places ✈️, and pondering 🤔.
           </p>
-
-          <NextButton href="/experience" label="View my experiences >>" />
-
         </div>
       </div>
 

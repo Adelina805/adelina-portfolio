@@ -9,11 +9,11 @@ export default function HomePage() {
           Hello! my name is
         </p>
 
-        <h1 className="mt-12 font-bold tracking-tight leading-none text-[clamp(3rem,10vw,9rem)]">
+        <h1 className="mt-12 font-bold tracking-tight leading-none text-[clamp(3.6rem,10vw,9rem)]">
           ADELINA
         </h1>
 
-        <h2 className="font-normal tracking-tight leading-none text-[clamp(2.7rem,9vw,8.1rem)]">
+        <h2 className="font-normal tracking-tight leading-none text-[clamp(3.3rem,9vw,8.1rem)]">
           MARTINEZ
         </h2>
 
