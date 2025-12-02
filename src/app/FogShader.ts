@@ -88,16 +88,16 @@ export const FogShader = {
       gradient += warp * 0.04;
 
       // ---------------------------------------
-      // LIGHT MODE GRADIENT (#6BA4E5 → #ffffff)
+      // LIGHT MODE GRADIENT (# → #)
       // ---------------------------------------
-      vec3 lightA = vec3(0.16, 0.36, 0.67); // #6BA4E5
-      vec3 lightB = vec3(1.0, 1.0, 1.0);   // white
+      vec3 lightA = vec3(0.235,0.388,0.565); // dark fog blue
+      vec3 lightB = vec3(0.863,0.925,1.0);   // background white
 
       // ---------------------------------------
-      // DARK MODE GRADIENT (#295DAA → #000000)
+      // DARK MODE GRADIENT (# → #)
       // ---------------------------------------
-      vec3 darkA = vec3(0.16, 0.36, 0.67); // #295DAA
-      vec3 darkB = vec3(0.0, 0.0, 0.0);    // black
+      vec3 darkA = vec3(0.235,0.388,0.565); // dark fog blue
+      vec3 darkB = vec3(0.,0.031,0.063);    // background black
 
       // compute each mode independently
       vec3 lightColor = mix(lightA, lightB, gradient);

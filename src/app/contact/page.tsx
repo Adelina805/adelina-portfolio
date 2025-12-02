@@ -22,7 +22,7 @@ export default function ContactPage() {
     </p>
 
       {/* Middle email container */}
-      <div className="flex-1 flex items-center justify-center pb-30">
+      <div className="flex-1 flex items-center justify-center pb-45">
         <a
           href="mailto:adelina.martinez805@gmail.com"
           className="font-bold tracking-tight leading-none underline hover:no-underline text-[clamp(1.25rem,5vw,2.5rem)]"
