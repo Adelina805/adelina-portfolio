@@ -11,10 +11,10 @@ export default function NextButton({ href, label }) {
       href={href}
       className={`
         fixed
-        right-[clamp(1rem,4vw,2rem)]
-        bottom-[calc(clamp(1rem,4vw,2rem))]
+        right-[clamp(1.5rem,4.5vw,2.5rem)]
+        bottom-[calc(clamp(1.5rem,4.5vw,2.5rem))]
         z-50 px-5 py-3 font-semibold tracking-wide transition hover:scale-105
-        ${dark ? "bg-black/0 text-white" : "bg-white/0 text-black"}
+        ${dark ? "bg-black/80 text-white" : "bg-white/80 text-black"}
       `}
     >
       {label}
