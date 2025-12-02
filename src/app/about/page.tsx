@@ -2,28 +2,66 @@ import NextButton from "../NextButton";
 
 export default function AboutPage() {
   return (
-    <section className="relative h-full px-4 flex flex-col">
+    <section
+      className="
+        relative h-full px-4 pt-10 md:pt-25 flex flex-col md:flex-row gap-10 max-w-255 mx-auto
+      "
+    >
+      {/* LEFT COLUMN */}
+      <div className="w-full md:w-[20rem] flex flex-col shrink-0">
 
-    {/* left column */}
-    // image
+        {/* IMAGE (10:12 aspect, fills container) */}
+        <div className="aspect-12/10 w-full overflow-hidden border-2">
+        <img src="/AdelinaM1.png" className="w-full object-fill" />
+        </div>
 
-    {/* right column */}
-    <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
-      Hello! my name is Adelina Martinez, a student, designer, and developer based in San Diego, CA
-    </h1>
+        {/* QUICK INFO */}
+        <div className="mt-6 text-[1rem] leading-relaxed space-y-3">
+          <div>🎓 Computer Science, Web Design @ SDSU</div>
+          <div>💻 UX/UI Designer & Frontend Developer</div>
+          <div>📍 Currently located in San Diego, CA</div>
+          <div>🏠 Origin: Port Hueneme, CA 🇺🇸 🇲🇽 🇩🇪</div>
+          <div>🎧 Listening to: indie rock, alternative</div>
+          <div>📚 Reading: probably bell hooks</div>
+          <div>
+            ⭐ Current Role(s): Instructional Design Student Assistant •
+            Research Assistant • Groundwork Books Developer
+          </div>
+        </div>
+      </div>
 
-    <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
-      I like to make things for the internet.
-    </h1>
+      {/* RIGHT COLUMN */}
+      <div className="flex flex-col md:min-w-[20rem] md:max-w-[40.4rem]">
+        <h1 className="font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          Hello! my name is Adelina Martinez, a student, designer, and developer
+          based in San Diego, CA
+        </h1>
 
-    <p className="mt-10 mx-auto text-xl">
-      I am currently attending San Diego State University pursuing my B.A. in Computer Science with a minor in Website Design. I am passionate about UX/UI Design, Frontend Development, Web Development, Graphic Design, and/or anything that blends visually creative design with technical engineering and user interaction. I am a proud wearer of many hats and believe the most meaningful innovation happens at the intersection of diverse skill sets.
-      <br />
-      <br />
-      When I’m not studying, working, coding or designing, you can usually find me at the beach 🏖️ playing volleyball 🏐, surfing 🌊, or reading 📚. I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮, exploring new places ✈️, and pondering 🤔.
-    </p>
+        <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          I like to make things for the internet.
+        </h1>
 
-    <NextButton href="/experience" label="View my experiences >>" />
+        <p className="mt-10 text-xl leading-relaxed">
+          I am currently attending <strong>San Diego State University</strong>{" "}
+          pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
+          <strong>Website Design</strong>. I am passionate about UX/UI Design,
+          Frontend Development, Web Development, Graphic Design, and/or anything
+          that blends visually creative design with technical engineering and
+          user interaction. I am a proud <strong>wearer of many hats</strong> and
+          believe the most meaningful innovation happens at the intersection of
+          diverse skill sets.
+          <br />
+          <br />
+          When I’m not studying, working, coding or designing, you can usually
+          find me at the beach 🏖️ playing volleyball 🏐, surfing 🌊, or reading 📚.
+          I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮,
+          exploring new places ✈️, and pondering 🤔.
+        </p>
+
+        <div className="mt-10">
+          <NextButton href="/experience" label="View my experiences >>" />
+        </div>
+      </div>
     </section>
   );
 }
