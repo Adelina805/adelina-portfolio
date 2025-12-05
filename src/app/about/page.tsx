@@ -44,9 +44,9 @@ export default function AboutPage() {
             <br />
             <br />
             When I’m not studying, working, coding, or designing, you can usually
-            find me at the beach 🏖️ playing volleyball 🏐, surfing 🌊, or reading 📚.
-            I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮,
-            exploring new places ✈️, and pondering 🤔.
+            find me at the beach playing volleyball, surfing, or reading.
+            I also love watching movies, thrifting, buying too many houseplants,
+            eating tasty food, exploring new places, and pondering.
           </p>
 
         {/* QUICK INFO (mobile order 3) */}
@@ -109,25 +109,30 @@ export default function AboutPage() {
             I like to make things for the internet.
           </h1>
 
-          <p className="mt-10 text-xl leading-relaxed">
-            I am currently attending <strong>San Diego State University</strong>{" "}
-            pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
-            <strong>Website Design</strong>. I am passionate about UX/UI Design,
-            Frontend Development, Web Development, Graphic Design, and/or{" "}
-            <em>
-              anything that blends visually creative design with technical
-              engineering and user interaction.
-            </em>{" "}
-            I am a proud <u>wearer of many hats</u> and believe the most meaningful
-            innovation happens at the intersection of diverse skill sets.
-            <br />
-            <br />
-            When I’m not studying, working, coding, or designing, you can usually
-            find me at the beach 🏖️ playing volleyball 🏐, surfing 🌊, or reading 📚.
-            I also love watching movies 🎬, thrifting 👕, eating tasty food 🌮,
-            exploring new places ✈️, and pondering 🤔.
-          </p>
+          <div className="mt-10 text-xl">
+            <p className="leading-relaxed mt-2">
+              I am currently attending <strong>San Diego State University</strong>{" "}
+              pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
+              <strong>Website Design</strong>. I am passionate about UX/UI Design,
+              Frontend Development, Web Development, Graphic Design, and/or{" "}
+              <em>
+                anything that blends visually creative design with technical
+                engineering and user interaction.
+              </em>{" "}
+              I am a proud <u>wearer of many hats</u> and believe the most meaningful
+              innovation happens at the intersection of diverse skill sets.
+              <br />
+            </p>
+
+            <p className="leading-relaxed mt-3">
+              When I’m not studying, working, coding, or designing, you can usually
+              find me at the beach playing volleyball, surfing, or reading.
+              I also love watching movies, thrifting, buying too many houseplants,
+              eating tasty food, exploring new places, and pondering.
+            </p>
         </div>
+      </div>
+
       </div>
 
     </section>

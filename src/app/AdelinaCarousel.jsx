@@ -110,7 +110,7 @@ export default function AdelinaCarousel() {
       </button>
 
       {/* DOT INDICATORS */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
         {images.map((_, i) => {
           const isActive = i === index;
           const dotColor = isActive
@@ -130,7 +130,7 @@ export default function AdelinaCarousel() {
             />
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
