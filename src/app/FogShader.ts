@@ -90,13 +90,13 @@ export const FogShader = {
       // ---------------------------------------
       // LIGHT MODE GRADIENT (# → #)
       // ---------------------------------------
-      vec3 lightA = vec3(0.235,0.388,0.565); // dark fog blue
+      vec3 lightA = vec3(0.204,0.459,0.718); // fog blue
       vec3 lightB = vec3(0.863,0.925,1.0);   // background white
 
       // ---------------------------------------
       // DARK MODE GRADIENT (# → #)
       // ---------------------------------------
-      vec3 darkA = vec3(0.235,0.388,0.565); // dark fog blue
+      vec3 darkA = vec3(0.204,0.459,0.718); // fog blue
       vec3 darkB = vec3(0.,0.031,0.063);    // background black
 
       // compute each mode independently
