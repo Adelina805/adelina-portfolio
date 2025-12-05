@@ -18,7 +18,7 @@ export default function AboutPage() {
       {/* ---------------------- */}
       {/*        MOBILE          */}
       {/* ---------------------- */}
-      <div className="flex flex-col md:hidden pb-20">
+      <div className="flex flex-col md:hidden pb-30">
 
         {/* IMAGE (mobile order 1) */}
         <div className="mb-10">
@@ -105,7 +105,7 @@ export default function AboutPage() {
       {/* ---------------------- */}
       {/*        DESKTOP         */}
       {/* ---------------------- */}
-      <div className="hidden md:flex md:flex-row md:gap-10 pb-20">
+      <div className="hidden md:flex md:flex-row md:gap-10 pb-30">
 
         {/* LEFT COLUMN = image + quick info */}
         <div className="flex flex-col w-[20rem] shrink-0">
