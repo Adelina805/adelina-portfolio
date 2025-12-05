@@ -63,7 +63,7 @@ export default function AboutPage() {
         <div className="mt-10 text-base leading-loose">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-4 h-4 shrink-0" />
-            Computer Science, Web Design
+            Computer Science, Web Design @SDSU
           </div>
 
           <div className="flex items-center gap-2">
@@ -94,9 +94,7 @@ export default function AboutPage() {
           <div className="flex items-start gap-2">
             <Star className="w-4 h-4 shrink-0 mt-2.5" />
             <span>
-              Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant •
-              Groundwork Books Developer
-            </span>
+              Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant            </span>
           </div>
         </div>
       </div>
@@ -152,8 +150,7 @@ export default function AboutPage() {
             <div className="flex items-start gap-2">
               <Star className="w-4 h-4 shrink-0 mt-2" />
               <span>
-                Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant •
-                Groundwork Books Developer
+                Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant
               </span>
             </div>
           </div>
