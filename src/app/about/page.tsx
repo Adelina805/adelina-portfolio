@@ -49,7 +49,7 @@ export default function AboutPage() {
               anything that blends visually creative design with technical
               engineering and user interaction.
             </em>{" "}
-            I am a proud <u>wearer of many hats</u> and believe the most meaningful
+            I am a proud wearer of many hats and believe the most meaningful
             innovation happens at the intersection of diverse skill sets.
             <br />
             <br />
@@ -180,7 +180,7 @@ export default function AboutPage() {
                 anything that blends visually creative design with technical
                 engineering and user interaction.
               </em>{" "}
-              I am a proud <u>wearer of many hats</u> and believe the most meaningful
+              I am a proud wearer of many hats and believe the most meaningful
               innovation happens at the intersection of diverse skill sets.
               <br />
             </p>
