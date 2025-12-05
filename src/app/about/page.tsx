@@ -88,7 +88,7 @@ export default function AboutPage() {
 
           <div className="flex items-center gap-2">
             <BookOpen className="w-4 h-4 shrink-0" />
-            Reading: probably bell hooks
+            Reading: most likely bell hooks
           </div>
 
           <div className="flex items-start gap-2">
@@ -144,7 +144,7 @@ export default function AboutPage() {
 
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 shrink-0" />
-              Reading: probably bell hooks
+              Reading: most likely bell hooks
             </div>
 
             <div className="flex items-start gap-2">
