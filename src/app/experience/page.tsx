@@ -32,7 +32,7 @@ export default function ExperiencePage() {
         description="I designed and optimized intuitive, user-centered interfaces for an AI-powered career mentorship platform, developing responsive React front-end features, producing and iterating on Figma prototypes, and collaborating with backend engineers to integrate real-time chat, scalable APIs, and AI-driven interactions that improved usability, reliability, and engagement for B2B clients."
         date="[Sep 2025 – Present]  •  Current  •  Part-Time"
         gif="/adelina/tempGIF.gif"
-        skills={["Figma", "Github", "React", "JSX/TSX", "HTML", "CSS"]}
+        skills={["Figma", "Github", "React", "JavaScript", "HTML/CSS"]}
       />
 
       <ExperienceItem
@@ -41,7 +41,7 @@ export default function ExperiencePage() {
         description="I redesigned and structured Canvas learning environments using custom HTML/CSS, guided data-driven updates through user analytics, produced instructional media aligned with UX/UI and learning experience principles, and audited course content for accessibility and clarity—resulting in significantly improved navigation, engagement, and compliance for over 1,200 learners."
         date="[Feb 2025 – Present]  •  Current  •  Part-Time"
         gif="/adelina/tempGIF.gif"
-        skills={["Illustrator", "Photoshop", "Branding"]}
+        skills={["Canvas LMS", "HTML/CSS", "Adobe Suite", "Accessibility"]}
       />
 
       <ExperienceItem
@@ -50,7 +50,7 @@ export default function ExperiencePage() {
         description="I co-led the redesign and redevelopment of Groundwork Books’ e-commerce platform using React, Next.js, and Firebase, designing and iterating Figma prototypes through user testing and engineering a responsive, component-driven UI integrated with Firebase Auth and the Square API, resulting in faster load times, improved mobile usability, and higher user satisfaction and task completion."
         date="[May 2024 – Present]  •  Current  •  Volunteer"
         gif="/adelina/tempGIF.gif"
-        skills={["Tool", "Librarys", "Tools", "Library"]}
+        skills={["Figma", "React", "Next.js", "Firebase", "Square API"]}
       />
 
       <ExperienceItem
@@ -59,7 +59,7 @@ export default function ExperiencePage() {
         description="I designed and launched a visually engaging photography portfolio (davecastrophotography.com) on GoDaddy with custom galleries and SEO optimization, and developed a responsive, SEO-optimized WordPress site with custom scheduling tools for a local HVAC company (pallancoolingandheating.com) significantly boosting online visibility, search ranking, and user engagement for both clients."
         date="[Mar 2025 – Aug 2025]  •  6 mos  •  Freelance"
         gif="/adelina/tempGIF.gif"
-        skills={["Tool", "Librarys", "Tools", "Library"]}
+        skills={["Webflow", "GoDaddy", "SEO", "Accessibility", "Design"]}
       />
 
       <ExperienceItem

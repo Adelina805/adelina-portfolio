@@ -46,7 +46,7 @@ export default function ExperienceItem({
           </p>
 
           {/* Tech Tags */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 pb-5">
             {skillList.map((skill) => (
               <span
                 key={skill}
@@ -61,7 +61,7 @@ export default function ExperienceItem({
       </div>
 
       {/* DATE - BOTTOM RIGHT */}
-      <p className="absolute bottom-5 right-5 text-base">
+      <p className="absolute bottom-5 right-5 pl-5 text-base">
         {date}
       </p>
     </div>
