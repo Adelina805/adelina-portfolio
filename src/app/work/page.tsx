@@ -15,7 +15,7 @@ export default function ProjectsPage() {
         pt-[calc(clamp(1rem,4vw,2rem))]
       "
     >
-      PROJECTS
+      WORK
     </h1>
     <p className="mt-5 mx-auto text-center text-base">
       Cool stuff i’ve designed and developed

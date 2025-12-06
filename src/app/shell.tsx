@@ -171,7 +171,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           {/* Top Nav */}
           <div className="flex items-center gap-4">
             <NavItem href="/contact">CONTACT</NavItem>
-            <NavItem href="/projects">PROJECTS</NavItem>
+            <NavItem href="/work">WORK</NavItem>
             <NavItem href="/experience">EXPERIENCE</NavItem>
             <NavItem href="/about">ABOUT</NavItem>
             <NavItem href="/">HOME</NavItem>

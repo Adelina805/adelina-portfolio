@@ -3,7 +3,7 @@ import ExperienceCard from "../ExperienceItem";
 
 export default function ExperiencePage() {
   return (
-    <section className="relative min-h-[90vh] px-5 pb-30 max-w-255 mx-auto">
+    <section className="relative min-h-[90vh] px-4 pb-30 max-w-255 mx-auto">
 
     <h1
       className="
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
       Professional work history and achievements
     </p>
 
-    <NextButton href="/projects" label="See my cool projects >>" />
+    <NextButton href="/work" label="Check out my cool work >>" />
 
     <ExperienceCard />
     <ExperienceCard />
