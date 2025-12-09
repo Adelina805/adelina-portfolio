@@ -27,56 +27,56 @@ export default function ExperiencePage() {
     <div className="space-y-10">
 
       <ExperienceItem
-        title="UX/UI Designer & Frontend Developer Research Assistant"
+        title="UX/UI Designer and Frontend Developer Research Assistant"
         workplace="DiLab @SDSU  |  Digital Innovation Research Lab"
-        description="I designed and optimized intuitive, user-centered interfaces for an AI-powered career mentorship platform, developing responsive React front-end features, producing and iterating on Figma prototypes, and collaborating with backend engineers to integrate real-time chat, scalable APIs, and AI-driven interactions that improved usability, reliability, and engagement for B2B clients."
+        description="I designed interfaces for a B2B AI mentorship platform, built responsive React features, refined Figma prototypes, and collaborated with backend engineers on frontend integration."
         date="Sep 2025 – Present • Part-Time"
-        gif="/adelina/tempGIF.gif"
+        gif="/experience/cat-computer.gif"
         skills={["Figma", "Github", "React", "JavaScript", "HTML/CSS"]}
       />
 
       <ExperienceItem
-        title="Instructional Design & Academic Media Production Assistant"
+        title="Instructional Design and Academic Media Production Assistant"
         workplace="SDSU Global Campus  |  Instructional Design Team"
-        description="I redesigned and structured Canvas learning environments using custom HTML/CSS, guided data-driven updates through user analytics, produced instructional media aligned with UX/UI and learning experience principles, and audited course content for accessibility and clarity—resulting in significantly improved navigation, engagement, and compliance for over 1,200 learners."
+        description="I redesigned Canvas courses with custom HTML/CSS, produced instructional media and lecture videos, and audited courses for accessibility to improve clarity and engagement for 27k+ learners."
         date="Feb 2025 – Present • Part-Time"
-        gif="/adelina/tempGIF.gif"
+        gif="/experience/cat-small-computer.gif"
         skills={["Canvas LMS", "HTML/CSS", "Adobe Suite", "Accessibility"]}
       />
 
       <ExperienceItem
-        title="UX/UI Designer & Frontend Developer - Groundwork Books"
+        title="UX/UI Designer and Frontend Developer - Groundwork Books"
         workplace="UCSD Groundwork Books Collective  |  Development Team"
-        description="I co-led the redesign and redevelopment of Groundwork Books’ e-commerce platform using React, Next.js, and Firebase, designing and iterating Figma prototypes through user testing and engineering a responsive, component-driven UI integrated with Firebase Auth and the Square API, resulting in faster load times, improved mobile usability, and higher user satisfaction and task completion."
+        description="I co-led the redesign of Groundwork Books’ e-commerce site using React, Next.js, and Firebase, creating Figma prototypes and building a responsive UI with improved performance and mobile usability."
         date="May 2024 – Present • Volunteer"
-        gif="/adelina/tempGIF.gif"
+        gif="/experience/cat-tapping.gif"
         skills={["Figma", "React", "Next.js", "Firebase", "Square API"]}
       />
 
       <ExperienceItem
-        title="Freelance Website Designer & Developer - 2 Client Websites"
+        title="Freelance Website Designer and Developer - 2 Client Websites"
         workplace="Dave Castro Photography | Pallan Cooling and Heating"
-        description="I designed and launched a visually engaging photography portfolio (davecastrophotography.com) on GoDaddy with custom galleries and SEO optimization, and developed a responsive, SEO-optimized WordPress site with custom scheduling tools for a local HVAC company (pallancoolingandheating.com) significantly boosting online visibility, search ranking, and user engagement for both clients."
+        description="I built a photography portfolio with custom galleries and SEO, and developed a responsive, SEO-optimized site for a local HVAC business, boosting both clients’ visibility and user engagement."
         date="Mar 2025 – Aug 2025 • Freelance"
-        gif="/adelina/tempGIF.gif"
-        skills={["Webflow", "GoDaddy", "SEO", "Accessibility", "Design"]}
+        gif="/experience/cat-mouse.gif"
+        skills={["Webflow", "WordPress", "SEO", "Accessibility", "Design"]}
       />
 
       <ExperienceItem
         title="Instructional Technology Services Student Analyst"
         workplace="SDSU Information Technology Services  |  IT Division"
-        description="Executed multi-channel IT support through ServiceNow, phone, Zoom, email, chat, and in-person, delivering exceptional user experience and efficiently resolving 400+ technical inquiries monthly. Collaborated with cross-functional teams to troubleshoot and resolve complex hardware, software, and network issues, enhancing system reliability and user satisfaction across campus."
+        description="I delivered IT support via phone, chat, email, Zoom, and in-person, resolving 400+ monthly issues and collaborating with teams to troubleshoot hardware, software, and network problems on campus."
         date="Jan 2024 – May 2024 • Part-Time"
-        gif="/adelina/tempGIF.gif"
+        gif="/experience/cat-helpdesk.gif"
         skills={["ServiceNow", "Zoom", "Gmail", "Slack", "Office 365"]}
       />
 
       <ExperienceItem
-        title="Ocean Lifeguard & Junior Lifeguard Instructor"
+        title="Ocean Lifeguard and Junior Lifeguard Instructor"
         workplace="City of Port Hueneme Lifeguard Association"
-        description="Led emergency response efforts with critical first aid and CPR while also managing daily fitness training and educational programs for junior lifeguards (ages 9–15), promoting safety, teamwork, and personal growth. Consistently ensured beach safety through vigilant monitoring, proactive hazard identification, and effective communication with beachgoers, contributing to a secure and enjoyable coastal environment."
+        description="I responded to emergencies with first aid and CPR, led training and educational programs for junior lifeguards, and ensured beach safety through constant monitoring and clear communication with visitors."
         date="Jun 2021 – May 2025 • Seasonal"
-        gif="/adelina/tempGIF.gif"
+        gif="/experience/boxing-cat.gif"
         skills={["Fins", "Buoy", "Sunscreen", "Sunglasses", "Binoculars"]}
       />
 
