@@ -1,4 +1,4 @@
-import NextButton from "../NextButton";
+import NextButton from "../components/NextButton";
 
 export default function ContactPage() {
   return (

@@ -1,5 +1,5 @@
-import NextButton from "../NextButton";
-import AdelinaCarousel from "../AdelinaCarousel";
+import NextButton from "../components/NextButton";
+import AdelinaCarousel from "../components/AdelinaCarousel";
 
 import {
   GraduationCap,

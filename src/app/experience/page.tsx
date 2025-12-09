@@ -1,5 +1,5 @@
-import NextButton from "../NextButton";
-import ExperienceItem from "../ExperienceItem";
+import NextButton from "../components/NextButton";
+import ExperienceItem from "../components/ExperienceItem";
 
 export default function ExperiencePage() {
   return (

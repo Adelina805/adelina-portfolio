@@ -4,10 +4,10 @@ import { useEffect, useState, useRef } from "react";
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import { Canvas } from "@react-three/fiber";
-import FogBackground from "./FogBackground";
+import FogBackground from "./components/FogBackground";
 import { usePathname } from "next/navigation";
-import CustomCursor from "./CustomCursor";
-import ThemeContext from "./ThemeContext";
+import CustomCursor from "./components/CustomCursor";
+import ThemeContext from "./components/ThemeContext";
 import { Perf } from 'r3f-perf';
 
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
