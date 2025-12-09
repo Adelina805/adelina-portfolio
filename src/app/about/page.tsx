@@ -57,44 +57,46 @@ export default function AboutPage() {
             find me at the beach playing volleyball, surfing, or reading.
             I also love watching movies, thrifting, buying too many houseplants,
             eating tasty food, exploring new places, and pondering.
+            Welcome to my corner of the internet, I made it myself :D
           </p>
 
         {/* QUICK INFO (mobile order 3) */}
-        <div className="mt-10 text-base leading-loose">
-          <div className="flex items-center gap-2">
-            <GraduationCap className="w-4 h-4 shrink-0" />
-            Computer Science, Web Design @SDSU
+        <div className="mt-10 text-xl leading-loose">
+          <div className="flex items-start gap-4">
+            <GraduationCap className="w-6 h-6 shrink-0 mt-2.5" />
+            Computer Science, Web Design
           </div>
 
-          <div className="flex items-center gap-2">
-            <Laptop className="w-4 h-4 shrink-0" />
-            UX/UI Designer & Frontend Developer
+          <div className="flex items-start gap-4">
+            <Laptop className="w-6 h-6 shrink-0 mt-2.5" />
+            UX/UI Designer & Frontend Dev
           </div>
 
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 shrink-0" />
+          <div className="flex items-start gap-4">
+            <MapPin className="w-6 h-6 shrink-0 mt-2.5" />
             Currently located in San Diego, CA
           </div>
 
-          <div className="flex items-center gap-2">
-            <Home className="w-4 h-4 shrink-0" />
+          <div className="flex items-start gap-4">
+            <Home className="w-6 h-6 shrink-0 mt-2.5" />
             Place of origin: Port Hueneme, CA
           </div>
 
-          <div className="flex items-center gap-2">
-            <Headphones className="w-4 h-4 shrink-0" />
+          <div className="flex items-start gap-4">
+            <Headphones className="w-6 h-6 shrink-0 mt-2.5" />
             Listening to: alternative, indie rock
           </div>
 
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 shrink-0" />
+          <div className="flex items-start gap-4">
+            <BookOpen className="w-6 h-6 shrink-0 mt-2.5" />
             Reading: most likely bell hooks
           </div>
 
-          <div className="flex items-start gap-2">
-            <Star className="w-4 h-4 shrink-0 mt-2.5" />
-            <span>
-              Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant            </span>
+          <div className="flex items-start gap-4">
+            <Star className="w-6 h-6 shrink-0 mt-2.5" />
+              <span>
+                Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
+              </span>
           </div>
         </div>
       </div>
@@ -105,7 +107,7 @@ export default function AboutPage() {
       {/* ---------------------- */}
       {/*        DESKTOP         */}
       {/* ---------------------- */}
-      <div className="hidden md:flex md:flex-row md:gap-10 pb-30">
+      <div className="hidden md:flex md:flex-row md:gap-10 pb-20">
 
         {/* LEFT COLUMN = image + quick info */}
         <div className="flex flex-col w-[20rem] shrink-0">
@@ -116,45 +118,47 @@ export default function AboutPage() {
           </div>
 
           {/* QUICK INFO */}
-          <div className="text-base leading-loose">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 shrink-0" />
-              Computer Science, Web Design @SDSU
+          <div className="text-lg leading-loose">
+            <div className="flex items-start gap-4">
+              <GraduationCap className="w-5 h-5 shrink-0 mt-2.5" />
+              Computer Science, Web Design
             </div>
 
-            <div className="flex items-center gap-2">
-              <Laptop className="w-4 h-4 shrink-0" />
-              UX/UI Designer & Frontend Developer
+            <div className="flex items-start gap-4">
+              <Laptop className="w-5 h-5 shrink-0 mt-2.5" />
+              UX/UI Designer & Frontend Dev
             </div>
 
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 shrink-0" />
+            <div className="flex items-start gap-4">
+              <MapPin className="w-5 h-5 shrink-0 mt-2.5" />
               Currently located in San Diego, CA
             </div>
 
-            <div className="flex items-center gap-2">
-              <Home className="w-4 h-4 shrink-0" />
+            <div className="flex items-start gap-4">
+              <Home className="w-5 h-5 shrink-0 mt-2.5" />
               Place of origin: Port Hueneme, CA
             </div>
 
-            <div className="flex items-center gap-2">
-              <Headphones className="w-4 h-4 shrink-0" />
+            <div className="flex items-start gap-4">
+              <Headphones className="w-5 h-5 shrink-0 mt-2.5" />
               Listening to: alternative, indie rock
             </div>
 
-            <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 shrink-0" />
+            <div className="flex items-start gap-4">
+              <BookOpen className="w-5 h-5 shrink-0 mt-2.5" />
               Reading: most likely bell hooks
             </div>
 
-            <div className="flex items-start gap-2">
-              <Star className="w-4 h-4 shrink-0 mt-2" />
+            <div className="flex items-start gap-4">
+              <Star className="w-5 h-5 shrink-0 mt-2.5" />
               <span>
-                Current Roles: Instructional Design Student Assistant • UX/UI Design and Frontend Dev Research Assistant
+                Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
               </span>
             </div>
+
           </div>
-        </div>
+
+          </div>
 
         {/* RIGHT COLUMN = text */}
         <div className="flex-1">
@@ -190,6 +194,7 @@ export default function AboutPage() {
               find me at the beach playing volleyball, surfing, or reading.
               I also love watching movies, thrifting, buying too many houseplants,
               eating tasty food, exploring new places, and pondering.
+              Welcome to my corner of the internet, I made it myself :D
             </p>
         </div>
       </div>
