@@ -67,7 +67,7 @@ export default function ExperiencePage() {
         workplace="SDSU Information Technology Services  |  IT Division"
         description="I delivered IT support via phone, chat, email, Zoom, and in-person, resolving 400+ monthly issues and collaborating with teams to troubleshoot hardware, software, and network problems on campus."
         date="Jan 2024 – May 2024 • Part-Time"
-        gif="/experience/cat-helpdesk.gif"
+        gif="/experience/cat-telephone-call.gif"
         skills={["ServiceNow", "Zoom", "Gmail", "Slack", "Office 365"]}
       />
 

@@ -62,37 +62,37 @@ export default function AboutPage() {
 
         {/* QUICK INFO (mobile order 3) */}
         <div className="mt-10 text-xl leading-loose">
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <GraduationCap className="w-6 h-6 shrink-0 mt-2.5" />
             Computer Science, Web Design
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <Laptop className="w-6 h-6 shrink-0 mt-2.5" />
             UX/UI Designer & Frontend Dev
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <MapPin className="w-6 h-6 shrink-0 mt-2.5" />
-            Currently located in San Diego, CA
+            Currently located: San Diego, CA
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <Home className="w-6 h-6 shrink-0 mt-2.5" />
-            Place of origin: Port Hueneme, CA
+            Hometown: Port Hueneme, CA
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <Headphones className="w-6 h-6 shrink-0 mt-2.5" />
-            Listening to: alternative, indie rock
+            Listening to: alternative, rock
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <BookOpen className="w-6 h-6 shrink-0 mt-2.5" />
             Reading: most likely bell hooks
           </div>
 
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <Star className="w-6 h-6 shrink-0 mt-2.5" />
               <span>
                 Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
@@ -131,17 +131,17 @@ export default function AboutPage() {
 
             <div className="flex items-start gap-4">
               <MapPin className="w-5 h-5 shrink-0 mt-2.5" />
-              Currently located in San Diego, CA
+              Currently located: San Diego, CA
             </div>
 
             <div className="flex items-start gap-4">
               <Home className="w-5 h-5 shrink-0 mt-2.5" />
-              Place of origin: Port Hueneme, CA
+              Hometown: Port Hueneme, CA
             </div>
 
             <div className="flex items-start gap-4">
               <Headphones className="w-5 h-5 shrink-0 mt-2.5" />
-              Listening to: alternative, indie rock
+              Listening to: alternative, rock
             </div>
 
             <div className="flex items-start gap-4">
