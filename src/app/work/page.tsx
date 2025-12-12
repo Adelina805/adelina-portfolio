@@ -29,86 +29,86 @@ export default function ProjectsPage() {
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
 
         <WorkItem
-          title="This is the Title of My Project ahah"
-          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/adelina/adelina-1.jpg"
+          title="Fullstack Ecommerce Website"
+          client="GROUNDWORK BOOKS COLLECTIVE | WEBSITE"
+          image="/work/Groundworks.png"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Commercial HVAC Website"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/work/PallanCoolingandHeating.png"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Photography Portfolio Website"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/adelina/adelina-2.jpg"
+          image="/work/DaveCastro.png"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
-          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
-          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
-        />
-
-        <WorkItem
-          title="This is the Title of My Project ahah"
-          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/adelina/adelina-3.jpg"
-          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
-        />
-
-        <WorkItem
-          title="This is the Title of My Project ahah"
-          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
-          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
-        />
-
-        <WorkItem
-          title="This is the Title of My Project ahah"
+          title="B2B AI Career Mentorship Platform"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
           image="/adelina/adelina-4.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Music and Concert Ticketing App"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/work/LUMI.png"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Book Review and Blog Website"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/adelina/adelina-5.jpg"
+          image="/work/BookFein.png"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="AI Powered Course Planner for SDSU"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-4.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Instructional Design and Development"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-4.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
         <WorkItem
-          title="This is the Title of My Project ahah"
+          title="Three.js Website Development"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/work/ThreeJS.png"
+          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
+        />
+
+        <WorkItem
+          title="3D and 2D Game Development"
+          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
+          image="/work/GameDev.png"
+          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
+        />
+
+        <WorkItem
+          title="Local Sustainability Connector App"
+          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
+          image="/adelina/adelina-4.jpg"
+          skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
+        />
+
+        <WorkItem
+          title="Adelina’s Awesome Art Archive"
+          client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
+          image="/adelina/adelina-4.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 

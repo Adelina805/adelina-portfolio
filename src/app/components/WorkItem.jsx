@@ -27,7 +27,7 @@ export default function WorkItem({
         {title}
       </h2>
 
-      <p className="text-base md:text-lg leading-relaxed mt-2">
+      <p className="text-sm md:text-base leading-relaxed mt-2">
         {client}
       </p>
 
