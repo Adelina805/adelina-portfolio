@@ -28,7 +28,7 @@ export default function AboutPage() {
         </div>
 
         {/* TEXT (mobile order 2) */}
-          <h1 className="font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          <h1 className="font-bold tracking-tight leading-none text-3xl">
             Hello! my name is{" "}
             <span className="line-through hover:no-underline">
               Adelina Martinez
@@ -36,11 +36,11 @@ export default function AboutPage() {
             , a student, designer, and developer based in San Diego, CA
           </h1>
 
-          <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          <h1 className="mt-10 font-bold tracking-tight leading-none text-3xl">
             I like to make things for the internet.
           </h1>
 
-          <p className="mt-10 text-xl leading-relaxed">
+          <p className="mt-10 text-lg leading-relaxed">
             I am currently attending <strong>San Diego State University</strong>{" "}
             pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
             <strong>Website Design</strong>. I am passionate about UX/UI Design,
@@ -61,39 +61,39 @@ export default function AboutPage() {
           </p>
 
         {/* QUICK INFO (mobile order 3) */}
-        <div className="mt-10 text-xl leading-loose">
+        <div className="mt-10 text-lg leading-loose">
           <div className="flex items-start gap-3">
-            <GraduationCap className="w-6 h-6 shrink-0 mt-2.5" />
+            <GraduationCap className="w-6 h-6 shrink-0 mt-2" />
             Computer Science, Web Design
           </div>
 
           <div className="flex items-start gap-3">
-            <Laptop className="w-6 h-6 shrink-0 mt-2.5" />
+            <Laptop className="w-6 h-6 shrink-0 mt-2" />
             UX/UI Designer & Frontend Dev
           </div>
 
           <div className="flex items-start gap-3">
-            <MapPin className="w-6 h-6 shrink-0 mt-2.5" />
+            <MapPin className="w-6 h-6 shrink-0 mt-2" />
             Currently located: San Diego, CA
           </div>
 
           <div className="flex items-start gap-3">
-            <Home className="w-6 h-6 shrink-0 mt-2.5" />
+            <Home className="w-6 h-6 shrink-0 mt-2" />
             Hometown: Port Hueneme, CA
           </div>
 
           <div className="flex items-start gap-3">
-            <Headphones className="w-6 h-6 shrink-0 mt-2.5" />
+            <Headphones className="w-6 h-6 shrink-0 mt-2" />
             Listening to: alternative, rock
           </div>
 
           <div className="flex items-start gap-3">
-            <BookOpen className="w-6 h-6 shrink-0 mt-2.5" />
+            <BookOpen className="w-6 h-6 shrink-0 mt-2" />
             Reading: most likely bell hooks
           </div>
 
           <div className="flex items-start gap-3">
-            <Star className="w-6 h-6 shrink-0 mt-2.5" />
+            <Star className="w-6 h-6 shrink-0 mt-2" />
               <span>
                 Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
               </span>
@@ -162,7 +162,7 @@ export default function AboutPage() {
 
         {/* RIGHT COLUMN = text */}
         <div className="flex-1">
-          <h1 className="font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          <h1 className="font-bold tracking-tight leading-none text-4xl">
             Hello! my name is{" "}
             <span className="line-through hover:no-underline">
               Adelina Martinez
@@ -170,7 +170,7 @@ export default function AboutPage() {
             , a student, designer, and developer based in San Diego, CA
           </h1>
 
-          <h1 className="mt-10 font-bold tracking-tight leading-none text-[clamp(2rem,5vw,2.5rem)]">
+          <h1 className="mt-10 font-bold tracking-tight leading-none text-4xl">
             I like to make things for the internet.
           </h1>
 
