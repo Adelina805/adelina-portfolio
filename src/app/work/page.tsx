@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         <WorkItem
           title="This is the Title of My Project ahah"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-1.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
         <WorkItem
           title="This is the Title of My Project ahah"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-2.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
@@ -59,7 +59,7 @@ export default function ProjectsPage() {
         <WorkItem
           title="This is the Title of My Project ahah"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-3.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
         <WorkItem
           title="This is the Title of My Project ahah"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-4.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
@@ -87,7 +87,7 @@ export default function ProjectsPage() {
         <WorkItem
           title="This is the Title of My Project ahah"
           client="THE NAME OR CLIENT | WEBSITE TYPE OR APP"
-          image="/experience/boxing-cat.gif"
+          image="/adelina/adelina-5.jpg"
           skill={["Tool", "Library", "Skill", "Tech", "Etc"]}
         />
 
