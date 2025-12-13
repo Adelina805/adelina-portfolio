@@ -3,7 +3,7 @@ import ExperienceItem from "../components/ExperienceItem";
 
 export default function ExperiencePage() {
   return (
-    <section className="relative min-h-[90vh] px-4 pb-30 max-w-255 mx-auto">
+    <section className="relative min-h-[90vh] px-4 pb-30 max-w-275 mx-auto">
 
     <h1
       className="
@@ -27,7 +27,7 @@ export default function ExperiencePage() {
     <div className="space-y-10">
 
       <ExperienceItem
-        title="UX/UI Designer and Frontend Developer Research Assistant"
+        title="UX/UI Designer and Frontend Developer Researcher"
         workplace="DiLab @SDSU  |  Digital Innovation Research Lab"
         description="I designed interfaces for a B2B AI mentorship platform, built responsive React features, refined Figma prototypes, and collaborated with backend engineers on frontend integration."
         date="Sep 2025 – Present • Part-Time"
@@ -36,7 +36,7 @@ export default function ExperiencePage() {
       />
 
       <ExperienceItem
-        title="Instructional Design and Academic Media Production Assistant"
+        title="Instructional Design and Academic Media Assistant"
         workplace="SDSU Global Campus  |  Instructional Design Team"
         description="I redesigned Canvas courses with custom HTML/CSS, produced instructional media and lecture videos, and audited courses for accessibility to improve clarity and engagement for 27k+ learners."
         date="Feb 2025 – Present • Part-Time"
@@ -45,7 +45,7 @@ export default function ExperiencePage() {
       />
 
       <ExperienceItem
-        title="UX/UI Designer and Frontend Developer - Groundwork Books"
+        title="UX/UI Designer and Frontend Developer Volunteer"
         workplace="UCSD Groundwork Books Collective  |  Development Team"
         description="I co-led the redesign of Groundwork Books’ e-commerce site using React, Next.js, and Firebase, creating Figma prototypes and building a responsive UI with improved performance and mobile usability."
         date="May 2024 – Present • Volunteer"
@@ -54,7 +54,7 @@ export default function ExperiencePage() {
       />
 
       <ExperienceItem
-        title="Freelance Website Designer and Developer - 2 Client Websites"
+        title="Freelance Website Designer and Developer - 2 Clients"
         workplace="Dave Castro Photography | Pallan Cooling and Heating"
         description="I built a photography portfolio with custom galleries and SEO, and developed a responsive, SEO-optimized site for a local HVAC business, boosting both clients’ visibility and user engagement."
         date="Mar 2025 – Aug 2025 • Freelance"

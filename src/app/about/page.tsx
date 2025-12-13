@@ -13,7 +13,7 @@ import {
 
 export default function AboutPage() {
   return (
-    <section className="relative h-auto px-4 pt-10 md:pt-25 max-w-255 mx-auto">
+    <section className="relative h-auto px-4 pt-10 md:pt-23 max-w-275 mx-auto">
 
       {/* ---------------------- */}
       {/*        MOBILE          */}
@@ -49,8 +49,10 @@ export default function AboutPage() {
               anything that blends visually creative design with technical
               engineering and user interaction.
             </em>{" "}
-            I am a proud wearer of many hats and believe the most meaningful
-            innovation happens at the intersection of diverse skill sets.
+              I currently work as an <strong>Instructional Design Student Assistant</strong> for SDSU’s Global Campus
+              and a <strong>UX/UI Design and Frontend Development Researcher</strong> for SDSU DILabs.
+              I am a proud wearer of many hats and believe <em>the most meaningful
+              innovation happens at the intersection of diverse skill sets.</em>
             <br />
             <br />
             When I’m not studying, working, coding, or designing, you can usually
@@ -62,43 +64,44 @@ export default function AboutPage() {
 
         {/* QUICK INFO (mobile order 3) */}
         <div className="mt-10 text-lg leading-loose">
-          <div className="flex items-start gap-3">
-            <GraduationCap className="w-6 h-6 shrink-0 mt-2" />
-            Computer Science, Web Design
-          </div>
+            <div className="flex items-start gap-4">
+              <GraduationCap className="w-5 h-5 shrink-0 mt-2.5" />
+              Computer Science, Web Design
+            </div>
 
-          <div className="flex items-start gap-3">
-            <Laptop className="w-6 h-6 shrink-0 mt-2" />
-            UX/UI Designer & Frontend Dev
-          </div>
+            <div className="flex items-start gap-4">
+              <Laptop className="w-5 h-5 shrink-0 mt-2.5" />
+              UX/UI Designer & Frontend Dev
+            </div>
 
-          <div className="flex items-start gap-3">
-            <MapPin className="w-6 h-6 shrink-0 mt-2" />
-            Currently located: San Diego, CA
-          </div>
+            <div className="flex items-start gap-4">
+              <MapPin className="w-5 h-5 shrink-0 mt-2.5" />
+              Currently located: San Diego, CA
+            </div>
 
-          <div className="flex items-start gap-3">
-            <Home className="w-6 h-6 shrink-0 mt-2" />
-            Hometown: Port Hueneme, CA
-          </div>
+            <div className="flex items-start gap-4">
+              <Home className="w-5 h-5 shrink-0 mt-2.5" />
+              Hometown: Port Hueneme, CA
+            </div>
 
-          <div className="flex items-start gap-3">
-            <Headphones className="w-6 h-6 shrink-0 mt-2" />
-            Listening to: alternative, rock
-          </div>
+            <div className="flex items-start gap-4">
+              <Headphones className="w-5 h-5 shrink-0 mt-2.5" />
+              Listening to: alternative, rock
+            </div>
 
-          <div className="flex items-start gap-3">
-            <BookOpen className="w-6 h-6 shrink-0 mt-2" />
-            Reading: most likely bell hooks
-          </div>
+            <div className="flex items-start gap-4">
+              <BookOpen className="w-5 h-5 shrink-0 mt-2.5" />
+              Reading: most likely bell hooks
+            </div>
 
-          <div className="flex items-start gap-3">
-            <Star className="w-6 h-6 shrink-0 mt-2" />
+            <div className="flex items-start gap-4">
+              <Star className="w-5 h-5 shrink-0 mt-2.5" />
               <span>
-                Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
+                Core Values: Curiosity, Innovation, Empathy, Intuition, Equity
               </span>
+            </div>
+
           </div>
-        </div>
       </div>
 
       <NextButton href="/experience" label="View my experiences >>" />
@@ -152,7 +155,7 @@ export default function AboutPage() {
             <div className="flex items-start gap-4">
               <Star className="w-5 h-5 shrink-0 mt-2.5" />
               <span>
-                Current Roles: Instructional Design Student Assistant, UX/UI Design and Frontend Dev Researcher
+                Core Values: Curiosity, Innovation, Empathy, Intuition, Equity
               </span>
             </div>
 
@@ -184,8 +187,10 @@ export default function AboutPage() {
                 anything that blends visually creative design with technical
                 engineering and user interaction.
               </em>{" "}
-              I am a proud wearer of many hats and believe the most meaningful
-              innovation happens at the intersection of diverse skill sets.
+              I currently work as an <strong>Instructional Design Student Assistant</strong> for SDSU’s Global Campus
+              and a <strong>UX/UI Design and Frontend Development Researcher</strong> for SDSU DILabs.
+              I am a proud wearer of many hats and believe <em>the most meaningful
+              innovation happens at the intersection of diverse skill sets.</em>
               <br />
             </p>
 

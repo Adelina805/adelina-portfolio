@@ -7,10 +7,10 @@ export default function WorkItem({
     const skillList = skill ?? [];
 
   return (
-    <div className="w-full border-2 px-5 py-8 md:px-10 md:py-10 relative">
+    <div className="w-full relative">
 
       {/* IMAGE */}
-      <div className="w-full aspect-4/3 border-2 flex items-center justify-center overflow-hidden mb-5">
+      <div className="w-full aspect-4/3 border-2 flex items-center justify-center overflow-hidden">
         {image ? (
           <img
             src={image}
@@ -23,20 +23,20 @@ export default function WorkItem({
       </div>
 
       {/* TEXT */}
-      <h2 className="text-xl md:text-2xl font-bold leading-relaxed">
+      <h2 className="text-lg md:text-xl font-bold leading-relaxed mt-3">
         {title}
       </h2>
 
-      <p className="text-sm md:text-base leading-relaxed mt-2">
+      <p className="text-xs md:text-sm leading-relaxed mt-2">
         {client}
       </p>
 
       {/* Tech Tags */}
-        <div className="flex flex-wrap items-center gap-3 pt-5">
+        <div className="flex flex-wrap items-center gap-3 mt-3">
          {skillList.map((skill) => (
             <span
                 key={skill}
-            className="px-3 py-2 border text-sm md:text-base hover:bg-white/10"
+            className="px-3 py-1.5 border text-xs md:text-sm hover:bg-white/10"
             >
             {skill}
             </span>
