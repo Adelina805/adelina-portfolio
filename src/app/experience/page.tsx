@@ -36,7 +36,7 @@ export default function ExperiencePage() {
       />
 
       <ExperienceItem
-        title="Instructional Design and Academic Media Assistant"
+        title="Instructional Design and Academic Media Production Assistant"
         workplace="SDSU Global Campus  |  Instructional Design Team"
         description="I redesigned Canvas courses with custom HTML/CSS, produced instructional media and lecture videos, and audited courses for accessibility to improve clarity and engagement for 27k+ learners."
         date="Feb 2025 – Present • Part-Time"
@@ -54,7 +54,7 @@ export default function ExperiencePage() {
       />
 
       <ExperienceItem
-        title="Freelance Website Designer and Developer - 2 Clients"
+        title="Freelance Website Designer and Developer - 2 Client Websites"
         workplace="Dave Castro Photography | Pallan Cooling and Heating"
         description="I built a photography portfolio with custom galleries and SEO, and developed a responsive, SEO-optimized site for a local HVAC business, boosting both clients’ visibility and user engagement."
         date="Mar 2025 – Aug 2025 • Freelance"
@@ -66,7 +66,7 @@ export default function ExperiencePage() {
         title="Instructional Technology Services Student Analyst"
         workplace="SDSU Information Technology Services  |  IT Division"
         description="I delivered IT support via phone, chat, email, Zoom, and in-person, resolving 400+ monthly issues and collaborating with teams to troubleshoot hardware, software, and network problems on campus."
-        date="Jan 2024 – May 2024 • Part-Time"
+        date="Jan 2024 – May 2025 • Part-Time"
         gif="/experience/cat-telephone-call.gif"
         skills={["ServiceNow", "Zoom", "Gmail", "Slack", "Office 365"]}
       />
