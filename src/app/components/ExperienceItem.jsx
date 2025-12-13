@@ -31,17 +31,17 @@ export default function ExperienceItem({
 
           {/* Title + workplace */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg md:text-xl font-bold leading-relaxed">
+            <h2 className="text-xl font-bold leading-relaxed">
               {title}
             </h2>
 
-            <p className="text-base md:text-lg leading-relaxed">
+            <p className="text-base leading-relaxed">
               {workplace}
             </p>
           </div>
 
           {/* Description */}
-          <p className="text-base md:text-lg leading-relaxed">
+          <p className="text-base leading-relaxed">
             {description}
           </p>
 
@@ -50,7 +50,7 @@ export default function ExperienceItem({
             {skillList.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1.5 border text-xs md:text-sm hover:bg-white/10"
+                className="px-3 py-1.5 border text-sm hover:bg-white/10"
               >
                 {skill}
               </span>
@@ -61,7 +61,7 @@ export default function ExperienceItem({
       </div>
 
       {/* DATE - BOTTOM LEFT */}
-      <p className="absolute bottom-5 left-5 pl-0 md:pl-5 text-sm md:text-base italic">
+      <p className="absolute bottom-5 left-5 pl-0 md:pl-5 text-sm italic">
         {date}
       </p>
     </div>
