@@ -1,29 +1,17 @@
-import NextButton from "./components/NextButton";
+import HomeSection from "@/app/sections/HomeSection";
+import AboutSection from "@/app/sections/AboutSection";
+import WorkSection from "@/app/sections/WorkSection";
+import ExperienceSection from "@/app/sections/ExperienceSection";
+import ContactSection from "@/app/sections/ContactSection";
 
-export default function HomePage() {
+export default function MainScrollPage() {
   return (
-    <section className="relative z-10 h-full flex items-center justify-center">
-
-      <div className="relative z-10 w-fit text-center">
-        <p className="font-semibold text-[clamp(1rem,2vw,1.3rem)]">
-          Hello! my name is
-        </p>
-
-        <h1 className="mt-12 font-bold tracking-tight leading-none text-[clamp(3.6rem,10vw,9rem)]">
-          ADELINA
-        </h1>
-
-        <h2 className="font-normal tracking-tight leading-none text-[clamp(3.3rem,9vw,8.1rem)]">
-          MARTINEZ
-        </h2>
-
-        <p className="mt-12 font-semibold text-[clamp(1rem,2vw,1.3rem)]">
-          a designer who develops and<br />
-          a developer who designs.
-        </p>
-      </div>
-
-      <NextButton href="/about" label="Get to know me better >>" />
-    </section>
+    <main className="relative h-full overflow-auto snap-start snap-y snap-mandatory">
+      <HomeSection />
+      <AboutSection />
+      <WorkSection />
+      <ExperienceSection />
+      <ContactSection />
+    </main>
   );
 }
