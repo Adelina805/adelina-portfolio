@@ -2,7 +2,7 @@ import WorkItem from "../components/WorkItem";
 
 export default function Work() {
   return (
-    <section id="work" className="relative min-h-[calc(100%+2px)] px-4 pb-30 border-b-2 pt-[calc(clamp(1rem,4vw,2rem))]">
+    <section id="work" className="relative min-h-[calc(100%+2px)] px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
       <div className="max-w-275 mx-auto">
 
         <h1
@@ -13,7 +13,6 @@ export default function Work() {
             hover:no-underline
             transition-all
             text-center
-            pt-[calc(clamp(1rem,4vw,2rem))]
           "
         >
           WORK
