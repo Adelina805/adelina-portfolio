@@ -2,7 +2,7 @@ import ExperienceItem from "../components/ExperienceItem";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative px-4 pb-30 mx-auto border-b-2">
+    <section id="experience" className="relative min-h-[calc(100%+2px)] px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
       <div className="max-w-275 mx-auto">
 
       <h1
@@ -13,7 +13,6 @@ export default function Experience() {
           hover:no-underline
           transition-all
           text-center
-          pt-[calc(clamp(1rem,4vw,2rem))]
         "
       >
         EXPERIENCE

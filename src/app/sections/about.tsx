@@ -13,7 +13,7 @@ import {
 export default function About() {
   return (
 
-    <section id="about" className="relative min-h-full px-4 pt-10 md:pt-23 mx-auto border-b-2">
+    <section id="about" className="relative min-h-[calc(100%+2px)] px-4 pb-30 border-b-2 pt-[calc(clamp(3rem,8vw,6rem))]">
       <div className="max-w-275 mx-auto">
 
       {/* ---------------------- */}
@@ -108,7 +108,7 @@ export default function About() {
       {/* ---------------------- */}
       {/*        DESKTOP         */}
       {/* ---------------------- */}
-      <div className="hidden md:flex md:flex-row md:gap-10 pb-20">
+      <div className="hidden md:flex md:flex-row md:gap-10">
 
         {/* LEFT COLUMN = image + quick info */}
         <div className="flex flex-col w-[20rem] shrink-0">

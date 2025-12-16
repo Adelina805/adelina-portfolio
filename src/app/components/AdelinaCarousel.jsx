@@ -10,7 +10,6 @@ export default function AdelinaCarousel() {
     "/adelina/adelina-2.jpg",
     "/adelina/adelina-3.jpg",
     "/adelina/adelina-4.jpg",
-    "/adelina/adelina-5.jpg",
   ];
 
   const { dark } = useTheme();       // <-- get dark mode status
