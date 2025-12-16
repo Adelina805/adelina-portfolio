@@ -1,4 +1,3 @@
-import NextButton from "../components/NextButton";
 
 export default function ContactPage() {
   return (
@@ -31,7 +30,6 @@ export default function ContactPage() {
         </a>
       </div>
 
-    <NextButton href="/" label="That was fun! Do it again >>" />
     </section>
   );
 }

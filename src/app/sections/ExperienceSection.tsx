@@ -1,4 +1,3 @@
-import NextButton from "../components/NextButton";
 import ExperienceItem from "../components/ExperienceItem";
 
 export default function ExperiencePage() {
@@ -21,8 +20,6 @@ export default function ExperiencePage() {
     <p className="mt-5 mx-auto text-center text-base">
       Professional work history and achievements
     </p>
-
-    <NextButton href="/work" label="Check out my cool work >>" />
 
     <div className="space-y-10">
 

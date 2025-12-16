@@ -1,4 +1,3 @@
-import NextButton from "../components/NextButton";
 import AdelinaCarousel from "../components/AdelinaCarousel";
 
 import {
@@ -103,8 +102,6 @@ export default function AboutPage() {
 
           </div>
       </div>
-
-      <NextButton href="/experience" label="View my experiences >>" />
 
 
       {/* ---------------------- */}

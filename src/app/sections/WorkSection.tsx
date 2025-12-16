@@ -1,4 +1,3 @@
-import NextButton from "../components/NextButton";
 import WorkItem from "../components/WorkItem";
 
 export default function ProjectsPage() {
@@ -22,8 +21,6 @@ export default function ProjectsPage() {
       <p className="mt-5 mx-auto text-center text-base">
         Cool stuff i’ve designed and developed
       </p>
-
-      <NextButton href="/contact" label="Don’t be shy, say hello! >>" />
 
       {/* GRID FOR WORK ITEMS */}
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

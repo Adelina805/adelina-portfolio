@@ -20,3 +20,14 @@ html, body {
 .animate-loading-bar {
   animation: loading-bar 200ms ease-out forwards;
 }
+
+.fade-enter {
+  opacity: 0;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

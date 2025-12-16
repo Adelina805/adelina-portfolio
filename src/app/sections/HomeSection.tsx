@@ -1,4 +1,3 @@
-import NextButton from "../components/NextButton";
 
 export default function HomePage() {
   return (
@@ -23,7 +22,6 @@ export default function HomePage() {
         </p>
       </div>
 
-      <NextButton href="/about" label="Get to know me better >>" />
     </section>
   );
 }

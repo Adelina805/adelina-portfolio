@@ -9,8 +9,8 @@ export default function MainScrollPage() {
     <main className="relative h-full overflow-auto snap-start snap-y snap-mandatory">
       <HomeSection />
       <AboutSection />
-      <WorkSection />
       <ExperienceSection />
+      <WorkSection />
       <ContactSection />
     </main>
   );
