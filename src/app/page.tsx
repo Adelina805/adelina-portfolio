@@ -1,17 +1,17 @@
-import HomeSection from "@/app/sections/HomeSection";
-import AboutSection from "@/app/sections/AboutSection";
-import WorkSection from "@/app/sections/WorkSection";
-import ExperienceSection from "@/app/sections/ExperienceSection";
-import ContactSection from "@/app/sections/ContactSection";
+import Home from "@/app/sections/home";
+import About from "@/app/sections/about";
+import Work from "@/app/sections/work";
+import Experience from "@/app/sections/experience";
+import Contact from "@/app/sections/contact";
 
 export default function MainScrollPage() {
   return (
     <main className="relative h-full overflow-auto snap-start snap-y snap-mandatory">
-      <HomeSection />
-      <AboutSection />
-      <ExperienceSection />
-      <WorkSection />
-      <ContactSection />
+      <Home />
+      <About />
+      <Experience />
+      <Work />
+      <Contact />
     </main>
   );
 }

@@ -13,21 +13,46 @@ import { Perf } from "r3f-perf";
      NAV ITEM
    -------------------------- */
 function NavItem({ href, children }: { href: string; children: ReactNode }) {
+  const targetId = href.replace("/", "") || "home";
+
+  const [activeSection, setActiveSection] = useState("home");
+
+  // Observe scroll position and update active section
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // section must be 50% in view
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
-
-    const id = href.replace("/", "") || "home";
-    const el = document.getElementById(id);
-
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    const el = document.getElementById(targetId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   }
+
+  const isActive = activeSection === targetId;
 
   return (
     <button
       onClick={handleClick}
-      className="opacity-60 hover:line-through transition-all"
+      className={`
+        opacity-60 hover:line-through transition-all
+        ${isActive ? "font-bold line-through opacity-100" : ""}
+      `}
     >
       {children}
     </button>

@@ -1,8 +1,8 @@
 import WorkItem from "../components/WorkItem";
 
-export default function ProjectsPage() {
+export default function Work() {
   return (
-    <section className="relative min-h-[90vh] px-4 pb-30 max-w-275 mx-auto">
+    <section id="work" className="relative min-h-[90vh] px-4 pb-30 max-w-275 mx-auto">
 
       <h1
         className="

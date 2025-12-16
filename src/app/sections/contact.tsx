@@ -1,7 +1,7 @@
 
-export default function ContactPage() {
+export default function Contact() {
   return (
-    <section className="relative h-full px-4 flex flex-col">
+    <section id="contact" className="relative h-full px-4 flex flex-col">
 
     <h1
       className="

@@ -10,9 +10,9 @@ import {
   Star
 } from "lucide-react";
 
-export default function AboutPage() {
+export default function About() {
   return (
-    <section className="relative h-auto px-4 pt-10 md:pt-23 max-w-275 mx-auto">
+    <section id="about" className="relative h-auto px-4 pt-10 md:pt-23 max-w-275 mx-auto">
 
       {/* ---------------------- */}
       {/*        MOBILE          */}

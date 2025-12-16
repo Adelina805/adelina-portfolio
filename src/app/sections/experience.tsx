@@ -1,8 +1,8 @@
 import ExperienceItem from "../components/ExperienceItem";
 
-export default function ExperiencePage() {
+export default function Experience() {
   return (
-    <section className="relative min-h-[90vh] px-4 pb-30 max-w-275 mx-auto">
+    <section id="experience" className="relative min-h-[90vh] px-4 pb-30 max-w-275 mx-auto">
 
     <h1
       className="
