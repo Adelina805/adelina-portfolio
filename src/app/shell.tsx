@@ -7,44 +7,28 @@ import { Canvas } from "@react-three/fiber";
 import FogBackground from "./components/FogBackground";
 import CustomCursor from "./components/CustomCursor";
 import ThemeContext from "./components/ThemeContext";
-import { Perf } from "r3f-perf";
 
 /* --------------------------
-     NAV ITEM
-   -------------------------- */
-function NavItem({ href, children }: { href: string; children: ReactNode }) {
+   NAV ITEM
+--------------------------- */
+function NavItem({
+  href,
+  children,
+  activeSection,
+  onNavigate,
+}: {
+  href: string;
+  children: ReactNode;
+  activeSection: string;
+  onNavigate: (id: string) => void;
+}) {
   const targetId = href.replace("/", "") || "home";
-
-  const [activeSection, setActiveSection] = useState("home");
-
-  // Observe scroll position and update active section
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // section must be 50% in view
-      }
-    );
-
-    sections.forEach((sec) => observer.observe(sec));
-    return () => observer.disconnect();
-  }, []);
+  const isActive = activeSection === targetId;
 
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
-    const el = document.getElementById(targetId);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    onNavigate(targetId);
   }
-
-  const isActive = activeSection === targetId;
 
   return (
     <button
@@ -59,15 +43,45 @@ function NavItem({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
+/* --------------------------
+   SHELL
+--------------------------- */
 export default function Shell({ children }: { children: React.ReactNode }) {
   const [dark, setDark] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("home");
+
+  // GLOBAL INTERSECTION OBSERVER (tracks which section is in view)
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll to section when clicking nav
+  function handleNavigate(id: string) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // Loading fade-out
   useEffect(() => {
     const timer = setTimeout(() => setFadeOut(true), 0);
     const removeTimer = setTimeout(() => setIsLoading(false), 200);
-
     return () => {
       clearTimeout(timer);
       clearTimeout(removeTimer);
@@ -88,7 +102,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  // -------------
 
   function toggleDark(isDark: boolean) {
     setDark(isDark);
@@ -145,9 +158,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ref={borderRef}
             className="relative h-full w-full border-2 overflow-hidden"
           >
-            {/* --------------------------
-                MAIN WRAPPER
-               -------------------------- */}
             <main
               className="
                 relative h-full overflow-auto
@@ -159,7 +169,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             </main>
           </div>
 
-          {/* Vertical Side Rail LEFT */}
+          {/* LEFT NAV RAIL */}
           <div
             className="absolute origin-left -left-2 flex flex-row -rotate-90 justify-between text-sm select-none z-50 pointer-events-auto px-7 py-4 gap-8"
             style={{ width: railLength + 50 }}
@@ -180,17 +190,47 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               </button>
             </div>
 
-            {/* Top Nav */}
+            {/* TOP NAV */}
             <div className="flex items-center gap-4">
-              <NavItem href="/contact">CONTACT</NavItem>
-              <NavItem href="/work">WORK</NavItem>
-              <NavItem href="/experience">EXPERIENCE</NavItem>
-              <NavItem href="/about">ABOUT</NavItem>
-              <NavItem href="/">HOME</NavItem>
+              <NavItem
+                href="/contact"
+                activeSection={activeSection}
+                onNavigate={handleNavigate}
+              >
+                CONTACT
+              </NavItem>
+              <NavItem
+                href="/work"
+                activeSection={activeSection}
+                onNavigate={handleNavigate}
+              >
+                WORK
+              </NavItem>
+              <NavItem
+                href="/experience"
+                activeSection={activeSection}
+                onNavigate={handleNavigate}
+              >
+                EXPERIENCE
+              </NavItem>
+              <NavItem
+                href="/about"
+                activeSection={activeSection}
+                onNavigate={handleNavigate}
+              >
+                ABOUT
+              </NavItem>
+              <NavItem
+                href="/"
+                activeSection={activeSection}
+                onNavigate={handleNavigate}
+              >
+                HOME
+              </NavItem>
             </div>
           </div>
 
-          {/* Vertical Side Rail RIGHT */}
+          {/* RIGHT RAIL */}
           <div
             className="absolute origin-right -right-2 flex flex-row rotate-90 justify-between text-sm select-none z-50 pointer-events-auto px-7 py-4 gap-8"
             style={{ width: railLength + 50 }}

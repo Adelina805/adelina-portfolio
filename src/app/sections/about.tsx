@@ -12,7 +12,9 @@ import {
 
 export default function About() {
   return (
-    <section id="about" className="relative h-auto px-4 pt-10 md:pt-23 max-w-275 mx-auto">
+
+    <section id="about" className="relative min-h-full px-4 pt-10 md:pt-23 mx-auto border-b-2">
+      <div className="max-w-275 mx-auto">
 
       {/* ---------------------- */}
       {/*        MOBILE          */}
@@ -102,7 +104,6 @@ export default function About() {
 
           </div>
       </div>
-
 
       {/* ---------------------- */}
       {/*        DESKTOP         */}
@@ -203,6 +204,7 @@ export default function About() {
 
       </div>
 
+    </div>
     </section>
   );
 }
