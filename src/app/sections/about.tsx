@@ -14,7 +14,7 @@ export default function About() {
   return (
 
     <section id="about" className="relative min-h-[calc(100%+2px)] px-4 pb-30 border-b-2 pt-[calc(clamp(3rem,8vw,6rem))]">
-      <div className="max-w-275 mx-auto">
+      <div className="max-w-300 mx-auto">
 
       {/* ---------------------- */}
       {/*        MOBILE          */}
@@ -66,39 +66,39 @@ export default function About() {
         {/* QUICK INFO (mobile order 3) */}
         <div className="mt-10 text-lg leading-loose">
             <div className="flex items-start gap-4">
-              <GraduationCap className="w-5 h-5 shrink-0 mt-2.5" />
+              <GraduationCap className="w-5 h-5 shrink-0 mt-2" />
               Computer Science, Web Design
             </div>
 
             <div className="flex items-start gap-4">
-              <Laptop className="w-5 h-5 shrink-0 mt-2.5" />
+              <Laptop className="w-5 h-5 shrink-0 mt-2" />
               UX/UI Designer & Frontend Dev
             </div>
 
             <div className="flex items-start gap-4">
-              <MapPin className="w-5 h-5 shrink-0 mt-2.5" />
+              <MapPin className="w-5 h-5 shrink-0 mt-2" />
               Currently located: San Diego, CA
             </div>
 
             <div className="flex items-start gap-4">
-              <Home className="w-5 h-5 shrink-0 mt-2.5" />
+              <Home className="w-5 h-5 shrink-0 mt-2" />
               Hometown: Port Hueneme, CA
             </div>
 
             <div className="flex items-start gap-4">
-              <Headphones className="w-5 h-5 shrink-0 mt-2.5" />
+              <Headphones className="w-5 h-5 shrink-0 mt-2" />
               Listening to: alternative, rock
             </div>
 
             <div className="flex items-start gap-4">
-              <BookOpen className="w-5 h-5 shrink-0 mt-2.5" />
+              <BookOpen className="w-5 h-5 shrink-0 mt-2" />
               Reading: most likely bell hooks
             </div>
 
             <div className="flex items-start gap-4">
-              <Star className="w-5 h-5 shrink-0 mt-2.5" />
+              <Star className="w-5 h-5 shrink-0 mt-2" />
               <span>
-                Core Values: Curiosity, Innovation, Empathy, Intuition, Equity
+                Values: Curiosity, Innovation, Equity
               </span>
             </div>
 
@@ -121,39 +121,39 @@ export default function About() {
           {/* QUICK INFO */}
           <div className="text-lg leading-loose">
             <div className="flex items-start gap-4">
-              <GraduationCap className="w-5 h-5 shrink-0 mt-2.5" />
+              <GraduationCap className="w-5 h-5 shrink-0 mt-2" />
               Computer Science, Web Design
             </div>
 
             <div className="flex items-start gap-4">
-              <Laptop className="w-5 h-5 shrink-0 mt-2.5" />
+              <Laptop className="w-5 h-5 shrink-0 mt-2" />
               UX/UI Designer & Frontend Dev
             </div>
 
             <div className="flex items-start gap-4">
-              <MapPin className="w-5 h-5 shrink-0 mt-2.5" />
+              <MapPin className="w-5 h-5 shrink-0 mt-2" />
               Currently located: San Diego, CA
             </div>
 
             <div className="flex items-start gap-4">
-              <Home className="w-5 h-5 shrink-0 mt-2.5" />
+              <Home className="w-5 h-5 shrink-0 mt-2" />
               Hometown: Port Hueneme, CA
             </div>
 
             <div className="flex items-start gap-4">
-              <Headphones className="w-5 h-5 shrink-0 mt-2.5" />
+              <Headphones className="w-5 h-5 shrink-0 mt-2" />
               Listening to: alternative, rock
             </div>
 
             <div className="flex items-start gap-4">
-              <BookOpen className="w-5 h-5 shrink-0 mt-2.5" />
+              <BookOpen className="w-5 h-5 shrink-0 mt-2" />
               Reading: most likely bell hooks
             </div>
 
             <div className="flex items-start gap-4">
-              <Star className="w-5 h-5 shrink-0 mt-2.5" />
+              <Star className="w-5 h-5 shrink-0 mt-2" />
               <span>
-                Core Values: Curiosity, Innovation, Empathy, Intuition, Equity
+                Values: Curiosity, Innovation, Equity
               </span>
             </div>
 
