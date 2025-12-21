@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
+      className="relative px-4 pb-50 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
     >
       <div className="max-w-300 mx-auto relative">
 
@@ -20,12 +20,12 @@ export default function Experience() {
         </p>
 
         {/* TIMELINE LINE */}
-        <div className="absolute left-4 md:left-1/2 top-40 h-[calc(100%-10rem)] w-0.5 bg-current">
+        <div className="absolute left-4 md:left-1/2 top-40 h-full w-0.5 bg-current">
           <div className="absolute top-0 left-0 w-full h-full bg-current" />
         </div>
 
         {/* ITEMS */}
-        <div className="relative flex flex-col gap-40 pt-40">
+        <div className="relative flex flex-col gap-40 pt-40 pl-4 md:pl-0">
           {[
             {
               title: "UX/UI Designer and Frontend Developer Researcher",
