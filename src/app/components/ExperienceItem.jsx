@@ -1,3 +1,5 @@
+"use client";
+
 export default function ExperienceItem({
   title,
   workplace,
@@ -5,48 +7,51 @@ export default function ExperienceItem({
   date,
   gif,
   skills,
+  index,
 }) {
-
   const skillList = skills ?? [];
+  const isEven = index % 2 === 0;
 
   return (
-    <div className="mx-auto mt-10 w-full border-2 px-5 py-8 md:px-10 md:py-10 relative">
+    <div className="relative grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-10 md:gap-20 items-start w-full">
 
-      {/* GRID LAYOUT */}
-      <div className="flex flex-col gap-8 md:grid md:grid-cols-[4fr_2fr] md:items-start pb-10 md:pb-0">
-
-        {/* IMAGE / GIF BLOCK */}
-        <div className="order-1 md:order-2 flex flex-col">
-          <div className="w-full aspect-4/3 border-2 overflow-hidden flex items-center justify-center">
-            {gif ? (
-              <img src={gif} alt={title} className="w-full h-full object-cover" />
-            ) : (
-              <span className="text-5xl">GIF</span>
-            )}
+      {/* IMAGE */}
+      <div
+        className={`
+          w-full
+          md:row-start-1
+          flex
+          ${isEven ? "md:col-start-1 md:justify-end" : "md:col-start-2 md:justify-start"}
+        `}
+      >
+        {gif && (
+          <div className="w-full md:max-w-sm aspect-4/3 border-2 overflow-hidden">
+            <img
+              src={gif}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* TEXT BLOCK */}
-        <div className="order-2 md:order-1 flex flex-col gap-2">
+      {/* TEXT */}
+      <div
+        className={`
+          w-full
+          md:row-start-1
+          flex
+          ${isEven ? "md:col-start-2 md:justify-start" : "md:col-start-1 md:justify-end"}
+        `}
+      >
+        <div className="w-full flex flex-col gap-2">
+          <h2 className="text-xl font-bold leading-relaxed">{title}</h2>
 
-          {/* Title + workplace */}
-          <div className="flex flex-col gap-2">
-            <h2 className="text-xl font-bold leading-relaxed">
-              {title}
-            </h2>
+          <p className="text-base leading-relaxed">{workplace}</p>
 
-            <p className="text-base leading-relaxed">
-              {workplace}
-            </p>
-          </div>
+          <p className="text-base leading-relaxed">{description}</p>
 
-          {/* Description */}
-          <p className="text-base leading-relaxed">
-            {description}
-          </p>
-
-          {/* Tech Tags */}
-          <div className="flex flex-wrap items-center gap-3 pb-5 pt-3">
+          <div className="flex flex-wrap items-center gap-3 pt-3 pb-4">
             {skillList.map((skill) => (
               <span
                 key={skill}
@@ -57,13 +62,9 @@ export default function ExperienceItem({
             ))}
           </div>
 
+          <p className="text-sm italic">{date}</p>
         </div>
       </div>
-
-      {/* DATE - BOTTOM LEFT */}
-      <p className="absolute bottom-5 left-5 pl-0 md:pl-5 text-sm italic">
-        {date}
-      </p>
     </div>
   );
 }
