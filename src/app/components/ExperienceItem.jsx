@@ -11,7 +11,7 @@ export default function ExperienceItem({
   const skillList = skills ?? [];
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-start w-full">
+    <div className="relative grid grid-cols-1 md:grid-cols-[1.3fr_0.5fr] gap-10 md:gap-16 items-start w-full">
 
       {/* IMAGE */}
       <div

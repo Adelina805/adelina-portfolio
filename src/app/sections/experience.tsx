@@ -19,13 +19,13 @@ export default function Experience() {
           Professional work history and achievements
         </p>
 
-        {/* TIMELINE LINE */}
-        <div className="absolute top-40 h-full w-0.5 bg-current">
-          <div className="absolute top-0 left-0 w-full h-full bg-current" />
-        </div>
+        {/* ITEMS + TIMELINE */}
+        <div className="relative mt-20">
+          {/* TIMELINE LINE (spans exactly the items height) */}
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-current" />
 
-        {/* ITEMS */}
-        <div className="relative flex flex-col gap-40 pt-40 pl-4 md:pl-16">
+          {/* ITEMS */}
+          <div className="relative flex flex-col gap-20 pl-4 md:pl-16">
           {[
             {
               title: "UX/UI Designer and Frontend Developer Researcher",
@@ -99,6 +99,7 @@ export default function Experience() {
           ].map((item, i) => (
             <ExperienceItem key={i} {...item} />
           ))}
+          </div>
         </div>
       </div>
     </section>
