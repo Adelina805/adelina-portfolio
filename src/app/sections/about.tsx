@@ -13,7 +13,7 @@ import {
 export default function About() {
   return (
 
-    <section id="about" className="relative min-h-[calc(100%+2px)] px-4 pb-30 border-b-2 pt-[calc(clamp(3rem,8vw,6rem))]">
+    <section id="about" className="relative min-h-[calc(100%+2px)] px-4 pb-20 pt-20 border-b-2 flex items-center justify-center">
       <div className="max-w-300 mx-auto">
 
       {/* ---------------------- */}
