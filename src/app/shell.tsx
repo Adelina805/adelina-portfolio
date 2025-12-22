@@ -159,9 +159,22 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ref={borderRef}
             className="relative h-full w-full border-2 overflow-hidden"
           >
-            <main className=" relative h-full overflow-auto snap-y snap-mandatory fade-enter">
-              {children}
-            </main>
+            <div className="h-dvh overflow-hidden">
+              <main
+                className="
+                  relative
+                  h-full
+                  overflow-y-scroll
+                  overscroll-none
+                  snap-y
+                  snap-mandatory
+                  fade-enter
+                  p-[clamp(1rem,4vw,2rem)]
+                "
+              >
+                {children}
+              </main>
+            </div>
           </div>
 
           {/* LEFT NAV RAIL */}
