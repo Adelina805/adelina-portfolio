@@ -117,7 +117,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     <ThemeContext.Provider value={{ dark, toggleDark }}>
       <div
         className={`
-          h-svh p-[clamp(1rem,4vw,2rem)] relative overflow-hidden
+          h-dvh p-[clamp(1rem,4vw,2rem)] relative overflow-hidden
           ${dark ? "text-white" : "text-black"}
         `}
       >
