@@ -75,7 +75,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   // Scroll to section when clicking nav
   function handleNavigate(id: string) {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   // Loading fade-out
