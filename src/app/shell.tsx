@@ -117,7 +117,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     <ThemeContext.Provider value={{ dark, toggleDark }}>
       <div
         className={`
-          h-dvh p-[clamp(1rem,4vw,2rem)] relative overflow-hidden
+          h-svh p-[clamp(1rem,4vw,2rem)] relative overflow-hidden
           ${dark ? "text-white" : "text-black"}
         `}
       >
@@ -159,13 +159,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ref={borderRef}
             className="relative h-full w-full border-2 overflow-hidden"
           >
-            <main
-              className="
-                relative h-full overflow-auto
-                snap-y snap-mandatory
-                fade-enter
-              "
-            >
+            <main className=" relative h-full overflow-auto snap-y snap-mandatory fade-enter">
               {children}
             </main>
           </div>

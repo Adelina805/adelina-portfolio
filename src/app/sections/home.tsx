@@ -1,11 +1,11 @@
 
 export default function Home() {
   return (
-    <section id="home" className="relative z-10 min-h-dvh flex items-center justify-center border-b-2">
+    <section id="home" className="relative z-10 min-h-svh flex items-center justify-center border-b-2">
 
       <div className="relative z-10 w-fit text-center">
         <p className="font-semibold text-[clamp(1rem,2vw,1.3rem)]">
-          Hello! my name is
+          Hello! my name isss
         </p>
 
         <h1 className="mt-12 font-bold tracking-tight leading-none text-[clamp(3.6rem,10vw,9rem)]">

@@ -2,7 +2,7 @@ import WorkItem from "../components/WorkItem";
 
 export default function Work() {
   return (
-    <section id="work" className="relative min-h-dvh px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
+    <section id="work" className="relative min-h-svh px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
       <div className="max-w-300 mx-auto">
 
         <h1
