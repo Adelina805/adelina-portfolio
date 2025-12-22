@@ -23,7 +23,7 @@ export default function Work() {
         </p>
 
         {/* GRID FOR WORK ITEMS */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
           <WorkItem
             title="Fullstack Ecommerce Website"
