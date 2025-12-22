@@ -20,12 +20,12 @@ export default function Experience() {
         </p>
 
         {/* TIMELINE LINE */}
-        <div className="absolute left-4 md:left-1/2 top-40 h-full w-0.5 bg-current">
+        <div className="absolute top-40 h-full w-0.5 bg-current">
           <div className="absolute top-0 left-0 w-full h-full bg-current" />
         </div>
 
         {/* ITEMS */}
-        <div className="relative flex flex-col gap-40 pt-40 pl-4 md:pl-0">
+        <div className="relative flex flex-col gap-40 pt-40 pl-4 md:pl-16">
           {[
             {
               title: "UX/UI Designer and Frontend Developer Researcher",
@@ -97,7 +97,7 @@ export default function Experience() {
               ],
             },
           ].map((item, i) => (
-            <ExperienceItem key={i} {...item} index={i} />
+            <ExperienceItem key={i} {...item} />
           ))}
         </div>
       </div>

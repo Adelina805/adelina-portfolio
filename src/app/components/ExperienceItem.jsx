@@ -7,22 +7,15 @@ export default function ExperienceItem({
   date,
   gif,
   skills,
-  index,
 }) {
   const skillList = skills ?? [];
-  const isEven = index % 2 === 0;
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-10 md:gap-20 items-start w-full">
+    <div className="relative grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-start w-full">
 
       {/* IMAGE */}
       <div
-        className={`
-          w-full
-          md:row-start-1
-          flex
-          ${isEven ? "md:col-start-1 md:justify-end" : "md:col-start-2 md:justify-start"}
-        `}
+        className="w-full md:row-start-1 flex md:col-start-2 md:justify-start"
       >
         {gif && (
           <div className="w-full md:max-w-sm aspect-4/3 border-2 overflow-hidden">
@@ -37,12 +30,7 @@ export default function ExperienceItem({
 
       {/* TEXT */}
       <div
-        className={`
-          w-full
-          md:row-start-1
-          flex
-          ${isEven ? "md:col-start-2 md:justify-start" : "md:col-start-1 md:justify-end"}
-        `}
+        className="w-full md:row-start-1 flex md:col-start-1 md:justify-end"
       >
         <div className="w-full flex flex-col gap-2">
           <h2 className="text-xl font-bold leading-relaxed">{title}</h2>
