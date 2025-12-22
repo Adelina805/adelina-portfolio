@@ -12,6 +12,26 @@ html, body {
   cursor: none;
 }
 
+::selection {
+  background-color: black;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
+}
+
+html.dark ::selection {
+  background-color: white;
+  color: black;
+}
+
+html.dark ::-moz-selection {
+  background-color: white;
+  color: black;
+}
+
 @keyframes loading-bar {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(0%); }
