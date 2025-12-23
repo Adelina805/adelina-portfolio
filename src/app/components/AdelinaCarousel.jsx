@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useTheme } from "./ThemeContext";
+import gsap from "gsap";
 
 export default function AdelinaCarousel() {
   const images = [
@@ -12,32 +13,40 @@ export default function AdelinaCarousel() {
     "/adelina/adelina-4.jpg",
   ];
 
-  const { dark } = useTheme();       // <-- get dark mode status
+  const { dark } = useTheme();
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
 
-  // Swipe tracking
-  const touchStartX = useRef(null);
-  const touchEndX = useRef(null);
-  const SWIPE_THRESHOLD = 50; // px drag required
+  // GSAP refs
+  const currentImgRef = useRef(null);
+  const nextImgRef = useRef(null);
+  const directionRef = useRef(1);
 
-  // Go to the previous slide
+  // Drag refs
+  const startX = useRef(0);
+  const deltaX = useRef(0);
+  const isDragging = useRef(false);
+
+  const SWIPE_THRESHOLD = 80;
+
   const prevSlide = () => {
+    directionRef.current = -1;
     setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
     resetAutoScroll();
   };
 
-  // Go to the next slide
   const nextSlide = () => {
+    directionRef.current = 1;
     setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
     resetAutoScroll();
   };
 
-  // Auto-scroll handling
+  // Auto-scroll
   const startAutoScroll = () => {
     intervalRef.current = setInterval(() => {
+      directionRef.current = 1;
       setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
-    }, 3000); // change slide every 3s
+    }, 3000);
   };
 
   const resetAutoScroll = () => {
@@ -50,46 +59,98 @@ export default function AdelinaCarousel() {
     return () => clearInterval(intervalRef.current);
   }, []);
 
-  // Handles swipe start
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
+  // Slide animation (after commit)
+  useEffect(() => {
+    if (isDragging.current) return;
+
+    const dir = directionRef.current;
+    const width = currentImgRef.current.offsetWidth;
+
+    gsap.set(nextImgRef.current, { x: dir * width });
+
+    gsap.to(currentImgRef.current, {
+      x: -dir * width,
+      duration: 0.6,
+      ease: "power3.inOut",
+    });
+
+    gsap.to(nextImgRef.current, {
+      x: 0,
+      duration: 0.6,
+      ease: "power3.inOut",
+      onComplete: () => {
+        gsap.set(currentImgRef.current, { x: 0 });
+      },
+    });
+  }, [index]);
+
+  // Drag handlers
+  const handleStart = (x) => {
+    isDragging.current = true;
+    startX.current = x;
+    deltaX.current = 0;
+    clearInterval(intervalRef.current);
   };
 
-  // Track swipe movement
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
+  const handleMove = (x) => {
+    if (!isDragging.current) return;
+
+    deltaX.current = x - startX.current;
+    const width = currentImgRef.current.offsetWidth;
+    const dir = deltaX.current < 0 ? 1 : -1;
+    directionRef.current = dir;
+
+    gsap.set(currentImgRef.current, { x: deltaX.current });
+    gsap.set(nextImgRef.current, {
+      x: deltaX.current + dir * width,
+    });
   };
 
-  // Decide direction
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+  const handleEnd = () => {
+    if (!isDragging.current) return;
 
-    const distance = touchStartX.current - touchEndX.current;
+    isDragging.current = false;
+    const width = currentImgRef.current.offsetWidth;
 
-    if (distance > SWIPE_THRESHOLD) {
-      // swipe left
-      nextSlide();
-    } else if (distance < -SWIPE_THRESHOLD) {
-      // swipe right
-      prevSlide();
+    if (Math.abs(deltaX.current) > SWIPE_THRESHOLD) {
+      deltaX.current < 0 ? nextSlide() : prevSlide();
+    } else {
+      // snap back
+      gsap.to([currentImgRef.current, nextImgRef.current], {
+        x: (i) => (i === 0 ? 0 : directionRef.current * width),
+        duration: 0.4,
+        ease: "power3.out",
+      });
+      resetAutoScroll();
     }
-
-    // reset
-    touchStartX.current = null;
-    touchEndX.current = null;
   };
+
+  const nextIndex =
+    (index + directionRef.current + images.length) % images.length;
 
   return (
     <div
-      className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden select-none"
+      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+      onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+      onTouchEnd={handleEnd}
+      onMouseDown={(e) => handleStart(e.clientX)}
+      onMouseMove={(e) => handleMove(e.clientX)}
+      onMouseUp={handleEnd}
+      onMouseLeave={handleEnd}
     >
-      {/* IMAGE */}
+      {/* CURRENT IMAGE */}
       <img
+        ref={currentImgRef}
         src={images[index]}
-        className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      />
+
+      {/* NEXT IMAGE */}
+      <img
+        ref={nextImgRef}
+        src={images[nextIndex]}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
       {/* LEFT ARROW */}
@@ -107,29 +168,6 @@ export default function AdelinaCarousel() {
       >
         <MoveRight size={28} />
       </button>
-
-      {/* DOT INDICATORS */}
-      {/* <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => {
-          const isActive = i === index;
-          const dotColor = isActive
-            ? dark ? "bg-white/80" : "bg-black/80"
-            : dark ? "bg-white/30" : "bg-black/30";
-
-          return (
-            <button
-              key={i}
-              onClick={() => {
-                setIndex(i);
-                resetAutoScroll();
-              }}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                isActive ? "scale-110" : ""
-              } ${dotColor}`}
-            />
-          );
-        })}
-      </div> */}
     </div>
   );
 }
