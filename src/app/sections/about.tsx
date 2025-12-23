@@ -64,7 +64,7 @@ export default function About() {
           </p>
 
         {/* QUICK INFO (mobile order 3) */}
-        <div className="mt-10 text-lg leading-loose">
+        <div className="mt-7 text-lg leading-loose">
             <div className="flex items-start gap-4">
               <GraduationCap className="w-5 h-5 shrink-0 mt-2" />
               Computer Science, Web Design
