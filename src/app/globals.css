@@ -54,11 +54,11 @@ html.dark ::-moz-selection {
 
 
 /* to debug background bleeding issues */
-* {
+/* * {
   background-clip: content-box;
 }
 
 html { background: red; }
 body { background: blue; }
 main { background: green; }
-section { background: yellow; }
+section { background: yellow; } */

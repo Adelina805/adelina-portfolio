@@ -72,12 +72,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     return () => observer.disconnect();
   }, []);
 
-  // Scroll to section when clicking nav
-  // function handleNavigate(id: string) {
-  //   const el = document.getElementById(id);
-  //   if (!el) return;
-  //   el.scrollIntoView({ behavior: "smooth", block: "start" });
-  // }
   function handleNavigate(id: string) {
   const container = document.getElementById("scroll-container");
   const el = document.getElementById(id);
@@ -247,12 +241,12 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             style={{ width: railLength + 50 }}
           >
             <div className="flex items-center gap-4">
-              <Link
-                href="/"
+              <button
+                onClick={() => handleNavigate("home")}
                 className="opacity-60 hover:line-through line-through"
               >
                 ADELINA MARTINEZ
-              </Link>
+              </button>
             </div>
 
             <div className="flex items-center gap-4">
