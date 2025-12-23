@@ -7,9 +7,9 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
+      className="relative pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
     >
-      <div className="max-w-300 mx-auto relative">
+      <div className="max-w-300 mx-auto px-[clamp(1rem,4vw,2rem)]">
 
         <h1 className="font-bold text-[40px] line-through hover:no-underline transition-all text-center">
           EXPERIENCE

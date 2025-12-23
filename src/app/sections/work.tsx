@@ -2,19 +2,10 @@ import WorkItem from "../components/WorkItem";
 
 export default function Work() {
   return (
-    <section id="work" className="relative min-h-dvh px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
-      <div className="max-w-300 mx-auto">
+    <section id="work" className="relative min-h-dvh pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]">
+      <div className="max-w-300 mx-auto px-[clamp(1rem,4vw,2rem)]">
 
-        <h1
-          className="
-            font-bold
-            text-[40px]
-            line-through
-            hover:no-underline
-            transition-all
-            text-center
-          "
-        >
+        <h1 className="font-bold text-[40px] line-through hover:no-underline transition-all text-center">
           WORK
         </h1>
 

@@ -13,8 +13,8 @@ import {
 export default function About() {
   return (
 
-    <section id="about" className="relative min-h-[calc(100%+2px)] px-4 pb-20 pt-10 md:pt-20 border-b-2 flex items-center justify-center">
-      <div className="max-w-300 mx-auto">
+    <section id="about" className="relative min-h-[calc(100%+2px)] pb-20 pt-10 md:pt-20 border-b-2 flex items-center justify-center">
+      <div className="max-w-300 mx-auto px-[clamp(1rem,4vw,2rem)]">
 
       {/* ---------------------- */}
       {/*        MOBILE          */}
