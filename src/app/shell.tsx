@@ -73,10 +73,23 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Scroll to section when clicking nav
+  // function handleNavigate(id: string) {
+  //   const el = document.getElementById(id);
+  //   if (!el) return;
+  //   el.scrollIntoView({ behavior: "smooth", block: "start" });
+  // }
   function handleNavigate(id: string) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const container = document.getElementById("scroll-container");
+  const el = document.getElementById(id);
+  if (!container || !el) return;
+
+  const top =
+    el.offsetTop - container.offsetTop;
+
+  container.scrollTo({
+    top,
+    behavior: "smooth",
+  });
   }
 
   // Loading fade-out
@@ -159,8 +172,11 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ref={borderRef}
             className="relative h-full w-full border-2 overflow-hidden"
           >
-            <main className=" relative h-full overflow-auto snap-y snap-mandatory fade-enter">
-              {children}
+          <main
+            id="scroll-container"
+            className="relative h-full overflow-auto"
+          >
+          {children}
             </main>
           </div>
 

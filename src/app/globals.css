@@ -51,3 +51,14 @@ html.dark ::-moz-selection {
     opacity: 1;
   }
 }
+
+
+/* to debug background bleeding issues */
+* {
+  background-clip: content-box;
+}
+
+html { background: red; }
+body { background: blue; }
+main { background: green; }
+section { background: yellow; }
