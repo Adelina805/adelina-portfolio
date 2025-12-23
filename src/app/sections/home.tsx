@@ -1,7 +1,7 @@
 
 export default function Home() {
   return (
-    <section id="home" className="relative z-10 h-full flex flex-col items-center justify-center border-b-2">
+    <section id="home" className="relative z-10 h-[calc(100%+2px)] pb-5 flex flex-col items-center justify-center border-b-2">
 
       <div className="relative z-10 w-fit text-center">
         <p className="font-semibold text-[clamp(1rem,2vw,1.3rem)]">

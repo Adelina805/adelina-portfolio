@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative px-4 pb-50 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
+      className="relative px-4 pb-30 mx-auto border-b-2 pt-[calc(clamp(2rem,5vw,3rem))]"
     >
       <div className="max-w-300 mx-auto relative">
 
@@ -20,7 +20,7 @@ export default function Experience() {
         </p>
 
         {/* ITEMS + TIMELINE */}
-        <div className="relative mt-20">
+        <div className="relative mt-15">
           {/* TIMELINE LINE (spans exactly the items height) */}
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-current" />
 
