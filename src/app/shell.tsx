@@ -168,7 +168,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           >
           <main
             id="scroll-container"
-            className="relative h-full overflow-auto"
+            className="relative h-full overflow-auto overflow-x-hidden"
           >
           {children}
             </main>
