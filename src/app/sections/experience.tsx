@@ -16,7 +16,7 @@ export default function Experience() {
         </h1>
 
         <p className="mt-5 mx-auto text-center text-base">
-          Professional work history and achievements
+          Professional work history and background
         </p>
 
         {/* ITEMS + TIMELINE */}
