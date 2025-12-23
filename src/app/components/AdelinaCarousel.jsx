@@ -1,173 +1,314 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useTheme } from "./ThemeContext";
 import gsap from "gsap";
 
 export default function AdelinaCarousel() {
-  const images = [
-    "/adelina/adelina-1.jpg",
-    "/adelina/adelina-2.jpg",
-    "/adelina/adelina-3.jpg",
-    "/adelina/adelina-4.jpg",
-  ];
+  const images = useMemo(
+    () => [
+      "/adelina/adelina-1.jpg",
+      "/adelina/adelina-2.jpg",
+      "/adelina/adelina-3.jpg",
+      "/adelina/adelina-4.jpg",
+    ],
+    []
+  );
 
   const { dark } = useTheme();
   const [index, setIndex] = useState(0);
+
+  const containerRef = useRef(null);
+  const trackRef = useRef(null);
   const intervalRef = useRef(null);
 
-  // GSAP refs
-  const currentImgRef = useRef(null);
-  const nextImgRef = useRef(null);
-  const directionRef = useRef(1);
+  // interaction / animation guards
+  const isDraggingRef = useRef(false);
+  const isAnimatingRef = useRef(false);
 
-  // Drag refs
-  const startX = useRef(0);
-  const deltaX = useRef(0);
-  const isDragging = useRef(false);
+  // drag state
+  const pointerIdRef = useRef(null);
+  const startXRef = useRef(0);
+  const startTrackXRef = useRef(0);
+  const lastXRef = useRef(0);
+  const lastTRef = useRef(0);
+  const velocityRef = useRef(0);
 
-  const SWIPE_THRESHOLD = 80;
-
-  const prevSlide = () => {
-    directionRef.current = -1;
-    setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
-    resetAutoScroll();
+  const getWidth = () => {
+    const el = containerRef.current;
+    return el ? el.getBoundingClientRect().width : 0;
   };
 
-  const nextSlide = () => {
-    directionRef.current = 1;
-    setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
-    resetAutoScroll();
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  const modIndex = (i) => {
+    const n = images.length;
+    return ((i % n) + n) % n;
   };
 
-  // Auto-scroll
+  const prevIndex = modIndex(index - 1);
+  const nextIndex = modIndex(index + 1);
+
+  const stopAutoScroll = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
+
   const startAutoScroll = () => {
+    stopAutoScroll();
     intervalRef.current = setInterval(() => {
-      directionRef.current = 1;
-      setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+      slideBy(1, { source: "auto" });
     }, 3000);
   };
 
   const resetAutoScroll = () => {
-    clearInterval(intervalRef.current);
     startAutoScroll();
   };
 
+  // Ensure track is centered whenever layout changes or index changes
   useEffect(() => {
-    startAutoScroll();
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  // Slide animation (after commit)
-  useEffect(() => {
-    if (isDragging.current) return;
-
-    const dir = directionRef.current;
-    const width = currentImgRef.current.offsetWidth;
-
-    gsap.set(nextImgRef.current, { x: dir * width });
-
-    gsap.to(currentImgRef.current, {
-      x: -dir * width,
-      duration: 0.6,
-      ease: "power3.inOut",
-    });
-
-    gsap.to(nextImgRef.current, {
-      x: 0,
-      duration: 0.6,
-      ease: "power3.inOut",
-      onComplete: () => {
-        gsap.set(currentImgRef.current, { x: 0 });
-      },
-    });
+    const w = getWidth();
+    if (!w || !trackRef.current) return;
+    gsap.set(trackRef.current, { x: -w }); // show middle slide
   }, [index]);
 
-  // Drag handlers
-  const handleStart = (x) => {
-    isDragging.current = true;
-    startX.current = x;
-    deltaX.current = 0;
-    clearInterval(intervalRef.current);
-  };
+  // Start auto scroll
+  useEffect(() => {
+    startAutoScroll();
+    return () => stopAutoScroll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const handleMove = (x) => {
-    if (!isDragging.current) return;
+  // Re-center on resize
+  useEffect(() => {
+    const onResize = () => {
+      if (isDraggingRef.current || isAnimatingRef.current) return;
+      const w = getWidth();
+      if (!w || !trackRef.current) return;
+      gsap.set(trackRef.current, { x: -w });
+    };
 
-    deltaX.current = x - startX.current;
-    const width = currentImgRef.current.offsetWidth;
-    const dir = deltaX.current < 0 ? 1 : -1;
-    directionRef.current = dir;
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
-    gsap.set(currentImgRef.current, { x: deltaX.current });
-    gsap.set(nextImgRef.current, {
-      x: deltaX.current + dir * width,
+  const slideBy = (dir, { source } = {}) => {
+    if (!trackRef.current) return;
+    if (isAnimatingRef.current || isDraggingRef.current) return;
+
+    const w = getWidth();
+    if (!w) return;
+
+    isAnimatingRef.current = true;
+    stopAutoScroll();
+
+    // Track positions:
+    // centered (current): -w
+    // show prev: 0
+    // show next: -2w
+    const targetX = dir === 1 ? -2 * w : 0;
+
+    gsap.to(trackRef.current, {
+      x: targetX,
+      duration: 0.55,
+      ease: "power3.inOut",
+      onComplete: () => {
+        setIndex((i) => modIndex(i + dir));
+        // After state updates, effect re-centers to -w
+        isAnimatingRef.current = false;
+        if (source !== "auto") resetAutoScroll();
+        else startAutoScroll();
+      },
     });
   };
 
-  const handleEnd = () => {
-    if (!isDragging.current) return;
+  // Pointer events (touch + mouse) — most reliable
+  const onPointerDown = (e) => {
+    if (!trackRef.current || !containerRef.current) return;
+    if (isAnimatingRef.current) return;
 
-    isDragging.current = false;
-    const width = currentImgRef.current.offsetWidth;
+    // Only left mouse button
+    if (e.pointerType === "mouse" && e.button !== 0) return;
 
-    if (Math.abs(deltaX.current) > SWIPE_THRESHOLD) {
-      deltaX.current < 0 ? nextSlide() : prevSlide();
-    } else {
-      // snap back
-      gsap.to([currentImgRef.current, nextImgRef.current], {
-        x: (i) => (i === 0 ? 0 : directionRef.current * width),
-        duration: 0.4,
-        ease: "power3.out",
-      });
-      resetAutoScroll();
+    isDraggingRef.current = true;
+    pointerIdRef.current = e.pointerId;
+
+    // capture pointer so moves still come even if leaving the element
+    containerRef.current.setPointerCapture(e.pointerId);
+
+    stopAutoScroll();
+
+    const w = getWidth();
+    const baseX = -w;
+
+    // kill any in-progress tweens
+    gsap.killTweensOf(trackRef.current);
+
+    startXRef.current = e.clientX;
+    startTrackXRef.current = typeof gsap.getProperty(trackRef.current, "x") === "number"
+      ? gsap.getProperty(trackRef.current, "x")
+      : baseX;
+
+    lastXRef.current = e.clientX;
+    lastTRef.current = performance.now();
+    velocityRef.current = 0;
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDraggingRef.current) return;
+    if (pointerIdRef.current !== e.pointerId) return;
+    if (!trackRef.current) return;
+
+    const w = getWidth();
+    if (!w) return;
+
+    const dx = e.clientX - startXRef.current;
+
+    // resistance (subtle) when pulling too far
+    // allow some overscroll but resist beyond a band
+    const minX = -2 * w - 0.35 * w;
+    const maxX = 0 + 0.35 * w;
+
+    const rawX = startTrackXRef.current + dx;
+    const nextX = clamp(rawX, minX, maxX);
+
+    gsap.set(trackRef.current, { x: nextX });
+
+    // velocity estimate
+    const now = performance.now();
+    const dt = now - lastTRef.current;
+    if (dt > 0) {
+      const vx = (e.clientX - lastXRef.current) / dt; // px per ms
+      // low-pass filter so it's stable
+      velocityRef.current = 0.8 * velocityRef.current + 0.2 * vx;
+      lastXRef.current = e.clientX;
+      lastTRef.current = now;
     }
   };
 
-  const nextIndex =
-    (index + directionRef.current + images.length) % images.length;
+  const onPointerUpOrCancel = (e) => {
+    if (!isDraggingRef.current) return;
+    if (pointerIdRef.current !== e.pointerId) return;
+    if (!trackRef.current || !containerRef.current) return;
+
+    isDraggingRef.current = false;
+
+    // release capture
+    try {
+      containerRef.current.releasePointerCapture(e.pointerId);
+    } catch {}
+
+    pointerIdRef.current = null;
+
+    const w = getWidth();
+    if (!w) {
+      resetAutoScroll();
+      return;
+    }
+
+    const x = gsap.getProperty(trackRef.current, "x");
+    const centeredX = -w;
+
+    // Decide based on distance + velocity throw
+    const distanceFromCenter = x - centeredX; // >0 means dragged right (toward prev), <0 means dragged left (toward next)
+    const absDist = Math.abs(distanceFromCenter);
+
+    // velocity in px/ms -> convert to px over ~200ms feel window
+    const throwPx = velocityRef.current * 200;
+
+    const effective = distanceFromCenter + throwPx;
+
+    const DIST_THRESHOLD = 0.22 * w; // how far you must drag
+    const VEL_THRESHOLD = 0.55; // px/ms-ish feel threshold
+
+    let decision = 0; // 0 = snap back, -1 = prev, 1 = next
+
+    if (effective > DIST_THRESHOLD || velocityRef.current > VEL_THRESHOLD) {
+      decision = -1; // go prev (track moves right to 0)
+    } else if (effective < -DIST_THRESHOLD || velocityRef.current < -VEL_THRESHOLD) {
+      decision = 1; // go next (track moves left to -2w)
+    }
+
+    isAnimatingRef.current = true;
+
+    const targetX = decision === 0 ? centeredX : decision === 1 ? -2 * w : 0;
+
+    gsap.to(trackRef.current, {
+      x: targetX,
+      duration: 0.45,
+      ease: "power3.out",
+      onComplete: () => {
+        if (decision !== 0) {
+          setIndex((i) => modIndex(i + decision));
+          // index effect re-centers to -w
+        } else {
+          // ensure perfect center
+          gsap.set(trackRef.current, { x: centeredX });
+        }
+
+        isAnimatingRef.current = false;
+        resetAutoScroll();
+      },
+    });
+  };
 
   return (
     <div
+      ref={containerRef}
       className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden select-none"
-      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-      onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-      onTouchEnd={handleEnd}
-      onMouseDown={(e) => handleStart(e.clientX)}
-      onMouseMove={(e) => handleMove(e.clientX)}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleEnd}
+      style={{ touchAction: "pan-y" }} // allow vertical scroll; we handle horizontal drag
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUpOrCancel}
+      onPointerCancel={onPointerUpOrCancel}
     >
-      {/* CURRENT IMAGE */}
-      <img
-        ref={currentImgRef}
-        src={images[index]}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
-
-      {/* NEXT IMAGE */}
-      <img
-        ref={nextImgRef}
-        src={images[nextIndex]}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
+      {/* TRACK (Prev / Current / Next) */}
+      <div ref={trackRef} className="absolute inset-0 flex">
+        <div className="w-full h-full shrink-0">
+          <img
+            src={images[prevIndex]}
+            className="w-full h-full object-cover pointer-events-none"
+            draggable={false}
+            alt=""
+          />
+        </div>
+        <div className="w-full h-full shrink-0">
+          <img
+            src={images[index]}
+            className="w-full h-full object-cover pointer-events-none"
+            draggable={false}
+            alt=""
+          />
+        </div>
+        <div className="w-full h-full shrink-0">
+          <img
+            src={images[nextIndex]}
+            className="w-full h-full object-cover pointer-events-none"
+            draggable={false}
+            alt=""
+          />
+        </div>
+      </div>
 
       {/* LEFT ARROW */}
       <button
-        onClick={prevSlide}
+        onClick={() => slideBy(-1, { source: "button" })}
         className="absolute bottom-2.5 left-2 hover:bg-black/10 p-2 transition"
+        disabled={isAnimatingRef.current || isDraggingRef.current}
       >
         <MoveLeft size={28} />
       </button>
 
       {/* RIGHT ARROW */}
       <button
-        onClick={nextSlide}
+        onClick={() => slideBy(1, { source: "button" })}
         className="absolute bottom-2.5 right-2 hover:bg-black/10 p-2 transition"
+        disabled={isAnimatingRef.current || isDraggingRef.current}
       >
         <MoveRight size={28} />
       </button>
+
     </div>
   );
 }
