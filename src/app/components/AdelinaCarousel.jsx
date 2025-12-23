@@ -294,6 +294,7 @@ export default function AdelinaCarousel() {
       {/* LEFT ARROW */}
       <button
         onClick={() => slideBy(-1, { source: "button" })}
+        onPointerDown={(e) => e.stopPropagation()}
         className="absolute bottom-2.5 left-2 hover:bg-black/10 p-2 transition"
         disabled={isAnimatingRef.current || isDraggingRef.current}
       >
@@ -303,6 +304,7 @@ export default function AdelinaCarousel() {
       {/* RIGHT ARROW */}
       <button
         onClick={() => slideBy(1, { source: "button" })}
+        onPointerDown={(e) => e.stopPropagation()}
         className="absolute bottom-2.5 right-2 hover:bg-black/10 p-2 transition"
         disabled={isAnimatingRef.current || isDraggingRef.current}
       >
