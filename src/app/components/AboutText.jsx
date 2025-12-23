@@ -17,19 +17,20 @@ export default function AboutText({
       </h1>
 
       <p className={`mt-10 leading-relaxed ${bodySize}`}>
-        I am currently attending <strong>San Diego State University</strong>{" "}
-        pursuing my B.A. in <strong>Computer Science</strong> with a minor in{" "}
-        <strong>Website Design</strong>. I am passionate about UX/UI Design,
-        Frontend Development, Web Development, Graphic Design, and/or{" "}
+        I am pursuing my B.A. in <strong>Computer Science</strong> with a minor in
+        <strong> Website Design</strong> at <strong>San Diego State University</strong>.
+        I am passionate about UX/UI Design, Frontend Development, Graphic Design, and/or{" "}
         <em>
           anything that blends visually creative design with technical
           engineering and user interaction.
         </em>{" "}
         I currently work as an{" "}
-        <strong>Instructional Design Student Assistant</strong> for SDSU’s Global Campus
-        and a{" "}
-        <strong>UX/UI Design and Frontend Development Researcher</strong> for SDSU DILabs.
-        I am a proud wearer of many hats and believe{" "}
+        <strong>Instructional Design Student Assistant</strong> for{" "}
+        <a href="https://globalcampus.sdsu.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">SDSU Global Campus</a>
+        {" "}and a{" "}
+        <strong>UX/UI Design and Frontend Researcher</strong> for{" "}
+        <a href="https://digitalinnovation.sdsu.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">SDSU Digital Innovation Lab</a>
+        . I am a proud wearer of many hats and believe{" "}
         <em>
           the most meaningful innovation happens at the intersection of diverse skill sets.
         </em>
@@ -39,7 +40,9 @@ export default function AboutText({
         find me at the beach playing volleyball, surfing, or reading.
         I also love watching movies, thrifting, buying too many houseplants,
         eating tasty food, exploring new places, and pondering.
-        Welcome to my corner of the internet, I made it myself :D
+        Welcome to my corner of the internet, I{" "}
+        <a href="https://github.com/Adelina805/adelina-portfolio/commits/main/" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent"> made it myself</a>
+        {" "}:D
       </p>
     </>
   );

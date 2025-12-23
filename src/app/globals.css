@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+:root {
+  --accent-color: #acd5ff;
+}
+
+html.dark {
+  --accent-color: #acd5ff;
+}
+
+@theme {
+  --color-accent: var(--accent-color);
+}
+
 html, body {
   background: transparent !important;
   margin: 0;
@@ -13,22 +25,22 @@ html, body {
 }
 
 ::selection {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: black;
 }
 
 ::-moz-selection {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: black;
 }
 
 html.dark ::selection {
-  background-color: white;
+  background-color: var(--accent-color);
   color: black;
 }
 
 html.dark ::-moz-selection {
-  background-color: white;
+  background-color: var(--accent-color);
   color: black;
 }
 
