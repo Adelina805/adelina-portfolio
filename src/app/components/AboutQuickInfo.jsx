@@ -33,7 +33,7 @@ export default function AboutQuickInfo({ className = "" }) {
 
       <div className="flex items-start gap-4">
         <Headphones className="w-5 h-5 shrink-0 mt-2" />
-        Listening to: alternative, rock
+        Listening to: alternative, indie rock
       </div>
 
       <div className="flex items-start gap-4">
