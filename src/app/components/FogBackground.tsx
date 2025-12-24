@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
-import { FogShader } from "./FogShader";
+import { FogShader, syncFogColors } from "./FogShader";
 
 export default function FogBackground({ dark }: { dark: boolean }) {
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
@@ -19,6 +19,7 @@ export default function FogBackground({ dark }: { dark: boolean }) {
       duration: 0.4,
       ease: "power2.inOut",
     });
+      syncFogColors(FogShader, dark);
   }, [dark]);
 
   // animate time uniform

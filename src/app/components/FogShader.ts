@@ -4,6 +4,12 @@ export const FogShader = {
     u_mouse: { value: [0.5, 0.5] },
     u_resolution: { value: [1, 1] },
     u_darkMode: { value: 0.0 }, // 0 = light, 1 = dark
+
+    // fog colors (set from CSS via JS)
+    u_lightA: { value: [0, 0, 0] }, // fallback
+    u_lightB: { value: [1, 1, 1] },   // fallback
+    u_darkA:  { value: [1, 1, 1] }, // fallback
+    u_darkB:  { value: [0, 0, 0] }, // fallback
   },
 
   vertexShader: /* glsl */ `
@@ -19,6 +25,11 @@ export const FogShader = {
     uniform float u_time;
     uniform vec2 u_mouse;
     uniform float u_darkMode;
+
+    uniform vec3 u_lightA;
+    uniform vec3 u_lightB;
+    uniform vec3 u_darkA;
+    uniform vec3 u_darkB;
 
     // -----------------------------
     // Simplex Noise
@@ -71,13 +82,8 @@ export const FogShader = {
     void main() {
       vec2 uv = vUv;
 
-      // ----------------------------------------------
-      // Drifting "center" like your Tailwind radial gradient
-      // ----------------------------------------------
       vec2 center = vec2(0.5, 0.5);
-
       center += (u_mouse - 0.5) * 0.1;
-
       center.x += sin(u_time * 0.8) * 0.05 + sin(u_time * 0.23) * 0.02;
       center.y += cos(u_time * 0.6) * 0.05 + cos(u_time * 0.17) * 0.02;
 
@@ -87,26 +93,45 @@ export const FogShader = {
       float warp = snoise(uv * 4.0 + u_time * 0.2);
       gradient += warp * 0.04;
 
-      // ---------------------------------------
-      // LIGHT MODE GRADIENT (# → #)
-      // ---------------------------------------
-      vec3 lightA = vec3(0.204,0.459,0.718); // fog blue #3475b7
-      vec3 lightB = vec3(0.863,0.925,1.0);   // background white
+      vec3 lightColor = mix(u_lightA, u_lightB, gradient);
+      vec3 darkColor  = mix(u_darkA,  u_darkB,  gradient);
 
-      // ---------------------------------------
-      // DARK MODE GRADIENT (# → #)
-      // ---------------------------------------
-      vec3 darkA = vec3(0.204,0.459,0.718); // fog blue #3475b7
-      vec3 darkB = vec3(0.,0.031,0.063);    // background black
-
-      // compute each mode independently
-      vec3 lightColor = mix(lightA, lightB, gradient);
-      vec3 darkColor  = mix(darkA,  darkB,  gradient);
-
-      // crossfade identical to your Tailwind layers
       vec3 finalColor = mix(lightColor, darkColor, u_darkMode);
-
       gl_FragColor = vec4(finalColor, 1.0);
     }
   `
 };
+
+// ===============================
+// CSS → Shader color bridge
+// ===============================
+
+function cssVarToVec3(name: string): [number, number, number] {
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+
+  // Create a temp element to force computed rgb()
+  const el = document.createElement("div");
+  el.style.color = value;
+  document.body.appendChild(el);
+
+  const rgb = getComputedStyle(el).color;
+  document.body.removeChild(el);
+
+  const [r, g, b] = rgb
+    .match(/\d+/g)!
+    .map(v => Number(v) / 255);
+
+  return [r, g, b];
+}
+
+export function syncFogColors(shader: typeof FogShader, dark: boolean) {
+  if (dark) {
+    shader.uniforms.u_darkA.value = cssVarToVec3("--fog-a");
+    shader.uniforms.u_darkB.value = cssVarToVec3("--fog-b");
+  } else {
+    shader.uniforms.u_lightA.value = cssVarToVec3("--fog-a");
+    shader.uniforms.u_lightB.value = cssVarToVec3("--fog-b");
+  }
+}

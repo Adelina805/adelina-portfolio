@@ -1,11 +1,21 @@
 @import "tailwindcss";
 
 :root {
+   /* Highlight / Accent Color */
   --accent-color: #acd5ff;
+
+  /* Fog colors (LIGHT MODE) */
+  --fog-a: #3475b7;
+  --fog-b: #ffffff;
 }
 
 html.dark {
+  /* Highlight / Accent Color */
   --accent-color: #acd5ff;
+
+  /* Fog colors (DARK MODE) */
+  --fog-a: #3475b7;
+  --fog-b: #00080f;
 }
 
 @theme {
