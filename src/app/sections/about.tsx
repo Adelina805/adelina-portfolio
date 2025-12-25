@@ -12,7 +12,7 @@ export default function About() {
       <div className="flex flex-col md:hidden pb-30">
         {/* IMAGE */}
         <div className="mb-10">
-          <div className="aspect-12/10 w-full min-h-66.5 overflow-hidden border-2">
+          <div className="aspect-4/3 w-full overflow-hidden border-2">
             <AdelinaCarousel />
           </div>
         </div>
@@ -30,7 +30,7 @@ export default function About() {
       <div className="hidden md:flex md:flex-row md:gap-10">
         {/* LEFT COLUMN */}
         <div className="flex flex-col w-[20rem] shrink-0">
-          <div className="aspect-12/10 w-full min-h-66.5 mb-10 overflow-hidden border-2">
+          <div className="aspect-4/3 w-full mb-10 overflow-hidden border-2">
             <AdelinaCarousel />
           </div>
 

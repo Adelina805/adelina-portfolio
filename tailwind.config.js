@@ -10,6 +10,9 @@ export default {
     extend: {
       colors: {
         accent: "var(--accent-color)",
+        highlight: "var(--highlight-color)",
+        fogA: "var(--fog-a)",
+        fogB: "var(--fog-b)",
       },
     },
   },

@@ -256,7 +256,7 @@ export default function AdelinaCarousel() {
   return (
     <div
       ref={containerRef}
-      className="relative aspect-12/10 w-full min-h-66.5 overflow-hidden select-none"
+      className="relative aspect-4/3 w-full h-full overflow-hidden select-none"
       style={{ touchAction: "pan-y" }} // allow vertical scroll; we handle horizontal drag
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
