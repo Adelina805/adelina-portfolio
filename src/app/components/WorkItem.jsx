@@ -102,12 +102,14 @@ export default function WorkItem({
           ref={backdropRef}
           style={{ backgroundColor: "color-mix(in srgb, var(--fog-b) 70%, transparent)" }}
           className="fixed inset-0 z-100 flex items-center justify-center backdrop-blur-md"
-          onClick={closeModal}
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) closeModal();
+          }}
         >
           <div style={{ backgroundColor: "var(--fog-b)" }}
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className="w-full h-full md:w-[770px] md:h-[85vh] md:max-w-4xl flex flex-col relative md:border-2"
+            className="w-full h-full md:w-[770px] md:h-[85vh] md:max-w-4xl flex flex-col relative md:border-2 select-text"
           >
             {/* IMAGE AREA */}
             <div className="relative p-4 pb-0 aspect-4/3 overflow-hidden">
@@ -123,7 +125,7 @@ export default function WorkItem({
 
               {/* LEFT ARROW */}
               <button
-                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
                 className="absolute bottom-2.5 left-2 hover:bg-black/10 p-2 transition"
               >
                 <MoveLeft size={28} />
@@ -131,7 +133,7 @@ export default function WorkItem({
 
               {/* RIGHT ARROW */}
               <button
-                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
                 className="absolute bottom-2.5 right-2 hover:bg-black/10 p-2 transition"
               >
                 <MoveRight size={28} />
@@ -139,8 +141,7 @@ export default function WorkItem({
 
               {/* CLOSE */}
               <button
-                onClick={closeModal}
-                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); closeModal();}}
                 className="absolute top-2.5 right-2 hover:bg-black/10 p-2 transition"
               >
                 <X size={28} />

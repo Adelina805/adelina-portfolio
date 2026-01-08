@@ -3,7 +3,7 @@
 :root {
    /* Highlight / Accent Color */
   --accent-color: #003870;
-  --highlight-color: #cfe7ff;
+  --highlight-color: #95caff;
 
   /* Fog colors (LIGHT MODE) */
   --fog-a: #5d9ad7;
@@ -13,7 +13,7 @@
 html.dark {
   /* Highlight / Accent Color */
   --accent-color: #cfe7ff;
-  --highlight-color: #cfe7ff;
+  --highlight-color: #95caff;
 
   /* Fog colors (DARK MODE) */
   --fog-a: #377abc;
