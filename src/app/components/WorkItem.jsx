@@ -107,13 +107,7 @@ export default function WorkItem({
           <div style={{ backgroundColor: "var(--fog-b)" }}
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className="
-              w-full h-full
-              md:w-[770px] md:h-[90vh]
-              md:max-w-4xl
-              flex flex-col
-              relative border-2
-            "
+            className="w-full h-full md:w-[770px] md:h-[85vh] md:max-w-4xl flex flex-col relative md:border-2"
           >
             {/* IMAGE AREA */}
             <div className="relative p-4 pb-0 aspect-4/3 overflow-hidden">
