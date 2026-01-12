@@ -31,10 +31,10 @@ export default function AboutQuickInfo({ className = "" }) {
         Hometown: Port Hueneme, CA
       </div>
 
-      <div className="flex items-start gap-4">
+      {/* <div className="flex items-start gap-4">
         <Headphones className="w-5 h-5 shrink-0 mt-2" />
         Listening to: alternative, indie rock
-      </div>
+      </div> */}
 
       <div className="flex items-start gap-4">
         <BookOpen className="w-5 h-5 shrink-0 mt-2" />
